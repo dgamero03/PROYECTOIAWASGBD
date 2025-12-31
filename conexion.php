@@ -1,0 +1,6 @@
+<?php
+    $mysqli = new mysqli("localhost", "root", "", "pizzeria");
+    if($mysqli->connect_errno){
+        echo "<p>Fallo al conectar a MySQL: (", $mysqli->connect_errno, ") ", $mysqli->connect_error, "</p>";
+    } 
+?>
