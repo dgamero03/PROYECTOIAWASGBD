@@ -3,7 +3,7 @@ session_start();
 require 'conexion.php';
 
 // Obtener productos por categoría
-$categorias = ['pizzas', 'bebidas', 'postres', 'entrantes'];
+$categorias = ['bebidas', 'entrantes', 'baguettes', 'hamburguesas', 'pizzas', 'postres'];
 ?>
 
 <!doctype html>
@@ -11,9 +11,9 @@ $categorias = ['pizzas', 'bebidas', 'postres', 'entrantes'];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos.css?v=<?php echo time(); ?>">
     <title>Carta Completa - Cheese Burger</title>
 </head>
 <body>
@@ -24,10 +24,22 @@ $categorias = ['pizzas', 'bebidas', 'postres', 'entrantes'];
       <i class="fas fa-shopping-cart"></i>
   </a>
 
-  <div class="info-local">
-      <p class="mb-0"><strong>📍 C. San Sebastián, 16, 11650</strong></p>
-      <p class="mb-0"><strong>📞 956 731 391</strong></p>
-  </div>
+    <!-- Icono de información -->
+    <a tabindex="0" class="icono-circulo icono-info" role="button"
+   data-bs-toggle="popover"
+   data-bs-trigger="hover focus"
+   title="Información del local"
+   data-bs-content="📞 956 731 391<br>
+📍 C. San Sebastián, 16, 11650<br>
+<strong style='color:#800000;'>Cómo llegar</strong><br>
+<a href='https://www.google.com/maps/place/Pizzeria+Cheese+Burguer/@36.8599038,-5.6507068,17z' 
+   target='_blank' 
+   style='color:#800000; font-weight:600; text-decoration:underline; display:block; margin-top:8px;'>
+   Ver en Google Maps
+</a>"
+   data-bs-html="true">
+   <i class="fas fa-info-circle"></i>
+</a>
 
   <div class="contenedor-logo">
       <div class="logo-rombo">
@@ -44,16 +56,22 @@ $categorias = ['pizzas', 'bebidas', 'postres', 'entrantes'];
 
     <a href="#bebidas">Bebidas</a>
     <a href="#entrantes">Entrantes</a>
-    <a href="#pizzas">Pizzas</a>
-    <a href="#hamburguesas">Hamburguesas</a>
     <a href="#baguettes">Baguettes</a>
+    <a href="#hamburguesas">Hamburguesas</a>
+    <a href="#pizzas">Pizzas</a>
     <a href="#postres">Postres</a>
 
   </div>
 </nav>
 
-<div class="container mt-4 mb-5">
-    <h1 class="text-center mb-4">📋 Carta Completa</h1>
+<div class="container contenedor-carta mt-2 mb-3">
+    <div class="text-center mb-4">
+  <h1 style="font-family: 'Georgia', serif; font-size: 2.8rem; color: #800000; position: relative; margin-top: 20px;">
+    <i class="fas fa-clipboard-list me-2" style="color: #f6c453;"></i> Carta Completa
+    <span style="display: block; height: 3px; width: 80px; background-color: #f6c453; margin: 10px auto 0;"></span>
+  </h1>
+</div>
+
     
     <?php foreach ($categorias as $categoria): ?>
     <div class="row">
@@ -61,13 +79,15 @@ $categorias = ['pizzas', 'bebidas', 'postres', 'entrantes'];
             <h2 id="<?php echo $categoria; ?>" class="categoria-titulo">
                 <?php 
                 $iconos = [
+                    'bebidas' => 'fas fa-glass-whiskey',
+                    'entrantes' => 'fas fa-concierge-bell',
+                    'baguettes' => 'fas fa-bread-slice',
+                    'hamburguesas' => 'fas fa-hamburger',
                     'pizzas' => 'fas fa-pizza-slice',
-                    'bebidas' => 'fas fa-glass-martini',
-                    'postres' => 'fas fa-ice-cream',
-                    'entrantes' => 'fas fa-bread-slice'
+                    'postres' => 'fas fa-ice-cream'
                 ];
                 ?>
-                <i class="<?php echo $iconos[$categoria] ?? 'fas fa-utensils'; ?>"></i>
+                <i class="<?php echo $iconos[$categoria] ?? 'fas fa-utensils'; ?> icono-categoria-<?php echo $categoria; ?>"></i>
                 <?php echo ucfirst($categoria); ?>
             </h2>
         </div>
@@ -81,37 +101,45 @@ $categorias = ['pizzas', 'bebidas', 'postres', 'entrantes'];
         if ($resultado->num_rows > 0) {
             while($producto = $resultado->fetch_assoc()) {
         ?>
-        <div class="col-md-3 mb-4">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
             <div class="card card-producto">
                 <?php if ($producto['imagen']): ?>
-                    <img src="<?php echo $producto['imagen']; ?>" class="img-producto" alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                    <img src="<?php echo $producto['imagen']; ?>" 
+                        class="img-producto <?php echo ($producto['categoria'] === 'bebidas') ? 'img-bebida' : ''; ?>" 
+                        alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
                 <?php else: ?>
                     <div class="img-producto bg-light d-flex align-items-center justify-content-center">
                         <i class="fas fa-utensils fa-3x text-muted"></i>
                     </div>
                 <?php endif; ?>
-                
+
                 <div class="card-body">
                     <h5 class="card-title"><?php echo htmlspecialchars($producto['nombre']); ?></h5>
                     
+                    <?php if (!empty($producto['descripcion'])): ?>
+
                     <p class="card-text small text-muted">
-                        <?php echo htmlspecialchars($producto['description']); ?>
+                        <?php echo htmlspecialchars($producto['descripcion']); ?>
                     </p>
-                    
+                    <?php endif; ?>
+
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <span class="badge badge-info">
-                                <?php echo $producto['tiempo_preparacion']; ?> min
-                            </span>
+                            <?php if (!empty($producto['tiempo_preparacion'])): ?>
+                                <span class="badge badge-info">
+                                    <?php echo $producto['tiempo_preparacion']; ?> min
+                                </span>
+                            <?php endif; ?>
+
                             <h5 class="text-success mt-2 mb-0">
                                 €<?php echo number_format($producto['precio'], 2); ?>
                             </h5>
-                        </div>
-                        
+                        </div>    
+
                         <form action="agregar_carrito.php" method="post">
                             <input type="hidden" name="producto_id" value="<?php echo $producto['id']; ?>">
-                            <button type="submit" class="btn btn-naranja btn-sm">
-                                <i class="fas fa-cart-plus"></i>
+                            <button type="submit" class="btn btn-success btn-sm w-100">
+                                <i class="fas fa-cart-plus"></i> Añadir al carrito
                             </button>
                         </form>
                     </div>
@@ -126,23 +154,24 @@ $categorias = ['pizzas', 'bebidas', 'postres', 'entrantes'];
         ?>
     </div>
     <?php endforeach; ?>
-
-    <!-- Secciones adicionales -->
-    <h2 id="hamburguesas" class="categoria-titulo"><i class="fas fa-hamburger"></i> Hamburguesas</h2>
-    <p class="text-center text-muted">No hay productos en esta categoría</p>
-
-    <h2 id="baguettes" class="categoria-titulo"><i class="fas fa-bread-slice"></i> Baguettes</h2>
-    <p class="text-center text-muted">No hay productos en esta categoría</p>
-    
-    <div class="text-center mt-5">
-        <a href="index.php" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Volver al Inicio
-        </a>
-    </div>
 </div>
 
 <script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+  popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl);
+  });
+});
+</script>
+
+
 
 </body>
 </html>

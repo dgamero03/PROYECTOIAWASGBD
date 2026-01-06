@@ -44,85 +44,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- Estilos -->
+    <link rel="stylesheet" href="estilos.css?v=<?php echo time(); ?>">
     <title>Login - Cheese Burger</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ff6b35 0%, #ffa500 100%);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .login-card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 400px;
-        }
-        .logo-login {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #ff6b35;
-        }
-        .campo-label { 
-            width: 30%;
-            margin-bottom: 0; 
-            font-weight: bold; 
-        }
-        .form-group {
-            display: flex; 
-            align-items: center; 
-            position: relative; 
-            margin-bottom: 1rem; 
-        
-        }
-        .form-control {
-            flex: 1; 
-            font-size: 16px;
-            width: 100%;
-            margin-left: 20px;
-        }
 
-    </style>
 </head>
-<body>
-    <div class="container">
-        <div class="login-card">
-            <div class="logo-login">
-                <i class="fas fa-pizza-slice fa-3x mb-3"></i>
-                <h3>Cheese Burger</h3>
-                <h4 class="text-muted">Iniciar Sesión</h4>
+<body class="body-login">
+    <div class="container login-card">
+        <div class="logo-login">
+            <i class="fas fa-pizza-slice fa-3x mb-3"></i>
+            <h3>Cheese Burger</h3>
+            <h4 class="text-muted">Iniciar Sesión</h4>
+        </div>
+        
+        <?php echo $mensaje; ?>
+        
+        <form method="POST">
+            <div class="form-group-login d-flex align-items-center mb-3">
+                <label for="email" class="form-label campo-label-login"> <i class="fas fa-envelope"></i> Email</label>
+                <input type="email" name="email" id="email" class="form-control-login" required>
             </div>
-            
-            <?php echo $mensaje; ?>
-            
-            <form method="POST">
-                <div class="form-group d-flex align-items-center mb-3">
-                    <label for="email" class="form-label campo-label"> <i class="fas fa-envelope"></i> Email</label>
-                    <input type="email" name="email" id="email" class="form-control" required>
-                </div>
-                <br>
-                <div class="form-group d-flex align-items-center mb-3 position-relative">
-                <label for="password" class="form-label campo-label"> <i class="fas fa-lock"></i> Contraseña </label>
-                <input type="password" name="password" id="password" class="form-control" required>
-                <span class="position-absolute" style="right: 15px; cursor: pointer;" onclick="togglePassword()">
-                    <i class="fas fa-eye" id="toggleIcon"></i>
-                </span>
-                </div>
+            <br>
+            <div class="form-group-login d-flex align-items-center mb-3 position-relative">
+            <label for="password" class="form-label campo-label-login"> <i class="fas fa-lock"></i> Contraseña </label>
+            <input type="password" name="password" id="password" class="form-control-login" required>
+            <span class="position-absolute" style="right: 15px; cursor: pointer;" onclick="togglePassword()">
+                <i class="fas fa-eye" id="toggleIcon"></i>
+            </span>
+            </div>
 
-                <br>
-                <button type="submit" class="btn btn-primary btn-block btn-lg">
+        
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-primary btn-lg w-100 mb-2">
                     <i class="fas fa-sign-in-alt"></i> Entrar
                 </button>
-                
-                <div class="text-center mt-3">
-                    <p class="mb-1">¿No tienes cuenta? <a href="registro.php">Regístrate aquí</a></p>
-                    <p><a href="index.php">Continuar como invitado</a></p>
-                </div>
-            </form>
-        </div>
+
+                <a href="index.php" class="btn btn-secondary btn-lg w-100">
+                 Cancelar
+                </a>
+
+            </div>      
+
+            <div class="text-center mt-3">
+                <p class="mb-1">¿No tienes cuenta? <a href="registro.php">Regístrate aquí</a></p>
+                <p><a href="index.php">Continuar como invitado</a></p>
+            </div>
+        </form>
     </div>
 <script>
     function togglePassword() {

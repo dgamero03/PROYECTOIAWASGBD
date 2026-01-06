@@ -8,30 +8,32 @@ $resultado_novedades = $mysqli->query($sql_novedades);
 
 // MÁS VENDIDOS
 $sql_vendidos = "
-    SELECT p.*, IFNULL(SUM(d.cantidad), 0) AS total_vendido
+    SELECT p.*, 
+           COALESCE(SUM(d.cantidad), 0) AS total_vendido
     FROM productos p
     LEFT JOIN detalles_de_pedidos d ON p.id = d.producto_id
     WHERE p.activo = 1
     GROUP BY p.id
+    HAVING total_vendido > 0
     ORDER BY total_vendido DESC
     LIMIT 4
 ";
+
 $resultado_vendidos = $mysqli->query($sql_vendidos);
 ?>
 <!doctype html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Pizzería Cheese Burger 🍕</title>
+    <title>Pizzería Cheese Burger</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap 5 (necesario para que el carrusel funcione) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Estilos.css (el añadido de php es para que cargue siempre en el navegador, 
-     ya que hay veces que no carga la nueva modificacion) -->
+    <!-- Estilos -->
     <link rel="stylesheet" href="estilos.css?v=<?php echo time(); ?>">
 
 </head>
@@ -47,7 +49,6 @@ $resultado_vendidos = $mysqli->query($sql_vendidos);
   <a href="carrito.php" class="icono-circulo icono-carrito">
   <i class="fas fa-shopping-cart"></i>
   </a>
-
 
   <div class="contenedor-logo">
     <div class="logo-rombo">
@@ -65,9 +66,10 @@ $resultado_vendidos = $mysqli->query($sql_vendidos);
 
         <?php if (!empty($_SESSION["administrador"]) && $_SESSION["administrador"] == 1) { ?>
             <span class="me-3">(Administrador)</span>
-            <a href="anadir_productos.php"><i class="fas fa-plus-circle"></i> Añadir Productos </a>
+            <a href="admin_panel.php" style= "color: #f6c453"> Panel Admin </a>
         <?php } ?>
-
+        <a href="perfil.php">Perfil</a>
+        <a href="mis_pedidos.php">Pedidos</a>
         <a href="logout.php">Cerrar sesión</a>
         
     <?php } else { ?>
@@ -81,31 +83,37 @@ $resultado_vendidos = $mysqli->query($sql_vendidos);
 <div class="contenedor-principal text-center">
 
     <div class="bloque-titulo">
-        <h1>Pizzería Cheese Burger 🍕</h1>
-        <p>Las mejores pizzas y hamburguesas</p>
+    <h1> Pizzería Cheese Burger</h1>
+    <p>Las mejores pizzas y hamburguesas</p>
     </div>
 
-    <h3 class="mb-4 text-danger">🆕 Novedades</h3>
+
+    <h3 class="mb-4 text-danger">Novedades</h3>
     <div class="row justify-content-center">
 
         <?php
         if ($resultado_novedades && $resultado_novedades->num_rows > 0) {
             while ($producto = $resultado_novedades->fetch_assoc()) {
         ?>
-        <div class="col-md-3 mb-4">
+        <div class="col-md-3 mb-4 d-flex">
             <div class="producto">
                 <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="">
-                <h5 class="mt-2"><?php echo htmlspecialchars($producto['nombre']); ?></h5>
+                <h5 class="mt-2 mb-4"><?php echo htmlspecialchars($producto['nombre']); ?></h5>
                 <p><?php echo htmlspecialchars($producto['descripcion']); ?></p>
-                <span class="badge bg-secondary">Tamaño único</span>
-                <p class="mt-2"><strong><?php echo number_format($producto['precio'], 2); ?> €</strong></p>
+                <span class="badge bg-secondary"></span>
 
-                <form action="agregar_carrito.php" method="post">
-                    <input type="hidden" name="producto_id" value="<?php echo (int)$producto['id']; ?>">
-                    <button type="submit" class="btn btn-success btn-sm w-100">
-                        <i class="fas fa-cart-plus"></i> Añadir al carrito
-                    </button>
-                </form>
+                <div class="mt-auto">
+                    <div class="text-end mb-2">
+                        <strong><?php echo number_format($producto['precio'], 2); ?> €</strong>
+                    </div>
+
+                    <form action="agregar_carrito.php" method="post">
+                        <input type="hidden" name="producto_id" value="<?php echo (int)$producto['id']; ?>">
+                        <button type="submit" class="btn btn-success btn-sm w-100">
+                            <i class="fas fa-cart-plus"></i> Añadir al carrito
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
         <?php
@@ -116,46 +124,84 @@ $resultado_vendidos = $mysqli->query($sql_vendidos);
         ?>
     </div>
 
-    <hr>
+    <br>
 
-    <h3 class="mb-4 text-danger">🔥 Más pedidos</h3>
-    <div class="row justify-content-center">
+    <h3 class="mb-4 text-danger">Top ventas</h3>
+
+    <!-- CARRUSEL -->
+    <div id="carouselVendidos" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
 
         <?php
-        if ($resultado_vendidos && $resultado_vendidos->num_rows > 0) {
-            while ($producto = $resultado_vendidos->fetch_assoc()) {
-        ?>
-        <div class="col-md-3 mb-4">
-            <div class="producto">
-                <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="">
-                <h5 class="mt-2"><?php echo htmlspecialchars($producto['nombre']); ?></h5>
-                <p><?php echo htmlspecialchars($producto['descripcion']); ?></p>
-                <span class="badge bg-warning text-dark">Más vendido</span>
-                <p class="mt-2"><strong><?php echo number_format($producto['precio'], 2); ?> €</strong></p>
-
-                <form action="agregar_carrito.php" method="post">
-                    <input type="hidden" name="producto_id" value="<?php echo (int)$producto['id']; ?>">
-                    <button type="submit" class="btn btn-success btn-sm w-100">
-                        <i class="fas fa-cart-plus"></i> Añadir al carrito
-                    </button>
-                </form>
-            </div>
-        </div>
-        <?php
+        $contador = 0;
+        while ($producto = $resultado_vendidos->fetch_assoc()) {
+            if ($contador % 2 == 0) {
+                echo '<div class="carousel-item ' . ($contador == 0 ? 'active' : '') . '"><div class="row justify-content-center">';
             }
-        } else {
-            echo "<p>No hay productos disponibles.</p>";
+        ?>
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="producto">
+                    <img src="<?php echo htmlspecialchars($producto['imagen']); ?>" alt="">
+                    <h5 class="mt-2 mb-2"><?php echo htmlspecialchars($producto['nombre']); ?></h5>
+                    <p><?php echo htmlspecialchars($producto['descripcion']); ?></p>
+
+                    <div class="mt-auto">
+                        <div class="text-end mb-2">
+                            <strong><?php echo number_format($producto['precio'], 2); ?> €</strong>
+                        </div>
+
+                        <form action="agregar_carrito.php" method="post">
+                            <input type="hidden" name="producto_id" value="<?php echo (int)$producto['id']; ?>">
+                            <button type="submit" class="btn btn-success btn-sm w-100">
+                                <i class="fas fa-cart-plus"></i> Añadir al carrito
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php
+            $contador++;
+            if ($contador % 2 == 0 || $contador == $resultado_vendidos->num_rows) {
+                echo '</div></div>';
+            }
         }
         ?>
+        </div>
+
+        <!-- Controles Bootstrap 5 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselVendidos" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselVendidos" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
 
-    <footer class="text-center">
-        <p>Cheese Burger - Proyecto ASGBD - Curso 2025/2026</p>
-        <p><small>PHP · MySQL · Bootstrap</small></p>
+    <footer class="footer-cheese text-center">
+
+    <h5 class="footer-titulo">Pizzería Cheese Burger</h5>
+
+    <p class="footer-linea">
+        <i class="fas fa-map-marker-alt"></i> C. San Sebastián, 16, 11650
+    </p>
+
+    <p class="footer-linea">
+        <i class="fas fa-phone"></i> 956 731 391
+    </p>
+
+    <hr class="footer-separador">
+
+    <p class="footer-texto">Cheese Burger - Proyecto IAWASGBD - Curso 2025/2026</p>
+    <p class="footer-subtexto"><small>PHP · MySQL · Bootstrap</small></p>
+
     </footer>
+
+
 
 </div>
 
-<script src="js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
