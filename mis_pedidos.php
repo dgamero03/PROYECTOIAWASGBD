@@ -1,0 +1,145 @@
+<?php
+session_start();
+require 'conexion.php';
+
+if (!isset($_SESSION['usuario_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
+$usuario_id = $_SESSION['usuario_id'];
+
+$sql = "SELECT p.*, 
+               (SELECT SUM(cantidad) FROM detalles_de_pedidos WHERE pedido_id = p.id) as total_productos
+        FROM pedidos p 
+        WHERE p.usuario_id = '$usuario_id' 
+        ORDER BY p.creado_en DESC";
+$resultado = $mysqli->query($sql);
+?>
+
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- Estilos -->
+    <link rel="stylesheet" href="estilos.css?v=<?php echo time(); ?>">
+    <title>Mis Pedidos - Cheese Burger</title>
+</head> 
+<body class="body-pedidos">
+    <div class="container">
+        <div class="tarjeta-centro">
+
+            <!-- TÍTULO + ICONO DE INICIO A LA DERECHA -->
+            <div class="titulo-pedidos mb-4">
+                <h1 class="mb-0"><i class="fas fa-history"></i> Mis Pedidos</h1>
+
+                <a href="index.php" class="icono-circulo-pedidos icono-inicio-pedidos icono-pedidos" title="Inicio">
+                    <i class="fas fa-home"></i>
+                </a>
+            </div>
+
+            <?php if ($resultado->num_rows > 0): ?>
+                <?php while($pedido = $resultado->fetch_assoc()): 
+                    $clase_estado = 'estado-' . str_replace(' ', '_', $pedido['estado'] ?? 'pendiente');
+                ?>
+                <div class="card card-pedido">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            Pedido #<?php echo str_pad($pedido['id'], 6, '0', STR_PAD_LEFT); ?>
+                        </h5>
+                        <span class="badge badge-estado <?php echo $clase_estado; ?>">
+                            <?php 
+                            $estados = [
+                                'pendiente' => 'Pendiente',
+                                'preparando' => 'En preparación',
+                                'en_camino' => 'En camino',
+                                'entregado' => 'Entregado'
+                            ];
+                            echo $estados[$pedido['estado'] ?? 'pendiente'];
+                            ?>
+                        </span>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="mb-1">
+                                    <i class="fas fa-calendar"></i> 
+                                    <strong>Fecha:</strong><br>
+                                    <?php echo date('d/m/Y H:i', strtotime($pedido['creado_en'])); ?>
+                                </p>
+                                <p class="mb-1">
+                                    <i class="fas fa-<?php echo $pedido['tipo'] == 'domicilio' ? 'truck' : 'store'; ?>"></i>
+                                    <strong>Tipo:</strong><br>
+                                    <?php echo $pedido['tipo'] == 'domicilio' ? 'A domicilio' : 'Recogida'; ?>
+                                </p>
+                            </div>
+
+                            <div class="col-6">
+                                <p class="mb-1">
+                                    <i class="fas fa-box"></i>
+                                    <strong>Productos:</strong><br>
+                                    Unidades: <?php echo $pedido['total_productos'] ?: 0; ?> 
+                                </p>
+                                <p class="mb-1">
+                                    <i class="fas fa-euro-sign"></i>
+                                    <strong>Total:</strong><br>
+                                    €<?php echo number_format($pedido['total'], 2); ?>
+                                </p>
+                            </div>
+                        </div>
+
+                        <?php if ($pedido['tipo'] == 'domicilio' && $pedido['direccion']): ?>
+                        <div class="mt-1">
+                            <p class="mb-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <strong>Dirección:</strong><br>
+                                <?php echo htmlspecialchars($pedido['direccion']); ?>
+                            </p>
+                        </div>
+                        <?php endif; ?>
+
+                        <?php if ($pedido['tiempo_estimado']): ?>
+                        <div class="mt-3">
+                            <p class="mb-0">
+                                <i class="fas fa-clock"></i>
+                                <strong>Tiempo estimado:</strong> 
+                                <?php echo $pedido['tiempo_estimado']; ?> minutos
+                            </p>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div class="card-footer text-center">
+                        <a href="detalle_pedido.php?id=<?php echo $pedido['id']; ?>" 
+   class="btn btn-primary btn-sm px-4 py-2">
+    <i class="fas fa-eye"></i> Ver Detalles
+</a>
+
+                    </div>
+                </div>
+                <?php endwhile; ?>
+
+            <?php else: ?>
+                <div class="text-center py-5">
+                    <i class="fas fa-shopping-bag fa-4x text-muted mb-4"></i>
+                    <h3>Aún no has realizado pedidos</h3>
+                    <p class="text-muted">Haz tu primer pedido y aparecerá aquí</p>
+                    <a href="menu_completo.php" class="btn btn-primary btn-lg mt-3">
+                        <i class="fas fa-book"></i> Ver Carta
+                    </a>
+                </div>
+            <?php endif; ?>
+
+        </div>
+    </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<?php $mysqli->close(); ?>

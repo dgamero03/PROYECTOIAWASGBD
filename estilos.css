@@ -9,7 +9,7 @@ body {
 }
 
 .contenedor-principal {
-    max-width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -44,14 +44,22 @@ body {
 }
 
 .icono-carrito i {
-    font-size: 28px;
+    font-size: 30px;
     color: #800000;
     line-height: 1;
     display: block;
 }
 
+.icono-carrito i:hover {
+    transform: scale(1.3);
+}
+
+.icono-menu img:hover {
+    transform: scale(1.1);
+}
+
 .icono-circulo img {
-    width: 54px;
+    width: 55px;
     height: auto;
 }
 
@@ -70,10 +78,10 @@ body {
 .logo-rombo {
     background-color: #800000;
     border: 4px solid #f6c453;
-    padding: 20px;
+    padding: 30px;
     transform: rotate(45deg);
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,6 +110,11 @@ body {
     flex-wrap: wrap;
 }
 
+.navbar-principal .container-fluid {
+    flex-wrap: wrap;
+    gap: 7%;
+}
+
 .navbar-principal a,
 .navbar-principal span {
     color: white;
@@ -112,41 +125,64 @@ body {
 
 .navbar-principal a:hover {
     color: #ffe6d5;
+    text-decoration: underline;
 }
 
 /* ============================
-   BLOQUE TÍTULO
+       BLOQUE TÍTULO
 ============================ */
+
 .bloque-titulo {
-    background: linear-gradient(135deg, #800000,#ff6b35 );
+    background-color: #800000;
     color: white;
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
     margin-top: 30px;
+    text-align: center;
     margin-bottom: 30px;
 }
 
-.bloque-titulo h1 {
-    font-size: 32px;
+.bloque-titulo h1{
+    font-size: 2.8rem;
     font-weight: 700;
+    font-family: 'Georgia', serif;
+    color: #f6c453;                 
+    margin-bottom: 10px;
 }
 
-hr {
-    border: none;
-    border-top: 2px dashed #800000;
-    width: 60%;
-    margin: 40px auto;
+.bloque-titulo p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 10px 0;
+    opacity: 0.95;
 }
+
 
 /* ============================
    PRODUCTOS
 ============================ */
 .producto {
+    height: 100%; 
+    display: flex; 
+    flex-direction: column;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     padding: 15px;
     transition: transform 0.3s;
+}
+
+.producto form {
+    margin-top: auto;
+}
+
+.producto p {
+    flex-grow: 1;
+}
+
+.producto strong {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .producto:hover {
@@ -160,17 +196,59 @@ hr {
     border-radius: 8px;
 }
 
-/* ============================
-   FOOTER
-============================ */
-footer {
-    background: linear-gradient(135deg, #800000, #ff6b35);
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 40px;
-    font-size: 15px;
+#carouselVendidos {
+    margin-bottom: 40px;
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #800000;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* ============================
+          FOOTER 
+============================ */
+
+.footer-cheese {
+    background: #800000;
+    color: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 3px solid #f6c453;
+    margin-top: 40px;
+}
+
+.footer-cheese .footer-titulo {
+    color: #f6c453;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.footer-cheese .footer-linea {
+    margin: 0;
+    font-size: 16px;
+}
+
+.footer-cheese .footer-separador {
+    border: none;
+    border-top: 2px solid #f6c453;
+    width: 60%;
+    margin: 20px auto;
+}
+
+.footer-cheese .footer-texto {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.footer-cheese .footer-subtexto {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
 
 /* ================================
    AJUSTES PARA MOVILES Y TABLETS
@@ -220,43 +298,52 @@ footer {
 /* ============================
         ESTILOS CARTA
 ============================ */
+.contenedor-carta {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .carta-menu .container-fluid { 
     display: flex;
     justify-content: center; 
 }
+.carta-menu a {
+    margin: 0 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
 .categoria-titulo {
-    background-color: #ff6b35;
+    background-color: #800000;
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
     margin: 30px 0 20px 0;
     display: inline-block;
 }
-.card-producto {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    transition: transform 0.3s;
+
+.card-producto { 
+    width: 100%;
+    height: 100%; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+    display: flex; 
+    flex-direction: column; 
 }
+
 .card-producto:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+
 .img-producto {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-.btn-naranja {
-    background-color: #ff6b35;
-    color: white;
-    border: none;
-}
-.btn-naranja:hover {
-    background-color: #e55a2b;
-}
+
 .info-local {
     position: absolute;
     top: 110px;
@@ -266,4 +353,810 @@ footer {
     font-size: 16px;
     line-height: 1.2;
     z-index: 10;
+}
+
+.centrado {
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+/* Distribuir contenido */
+.card-producto .card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.card-producto h5 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+.card-producto form { 
+    margin-top: auto; 
+}
+.card-producto .card-text {
+    font-size: 13px;
+    flex-grow: 1; 
+    margin-bottom: 8px;
+}
+
+.card-producto .d-flex {
+    margin-top: auto; 
+}
+
+.card-producto .btn {
+    font-size: 13px;
+    padding: 6px 10px;
+}
+.icono-info {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 1.6rem;
+    color: #800000;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.icono-categoria-bebidas { color: #00bcd4; }
+.icono-categoria-entrantes { color: #cfd8dc; }
+.icono-categoria-baguettes { color: #d7b894; }
+.icono-categoria-hamburguesas { color: #ff9800; }
+.icono-categoria-pizzas { color: #fbc02d; }
+.icono-categoria-postres { color: #80deea; }
+
+.img-bebida {
+    height: 220px;
+    background-color: #fff; 
+    padding: 10px;
+    object-fit: contain;
+}
+
+/* ============================
+      Estilos Panel Admin
+============================ */
+
+.contenedor-admin {
+    max-width: 70%;
+    margin: 0 auto;
+}
+.admin-header {
+    background: linear-gradient(to right, #343a40, #6c757d);
+    color: white;
+    padding: 25px 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.card-stat {
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.stat-pedidos { background: linear-gradient(to right, #007bff, #0056b3); }
+.stat-usuarios { background: linear-gradient(to right, #dc3545, #c82333); }
+.stat-productos { background: linear-gradient(to right, #ffc107, #e0a800); }
+.stat-ingresos { background: linear-gradient(to right, #28a745, #1e7e34); }
+
+.card-modulo {
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+.card-modulo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.btn-modulo {
+    display: block;
+    background-color: #bbbbbbff;
+    color: #000;
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-modulo:hover {
+    background-color: #797979ff;
+    color: #ffffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.panel-admin {
+    border-radius: 15px;
+    padding: 20px;
+}
+
+/* ============================
+      Estilos Perfil
+============================ */
+
+.body-perfil {
+    background-image: url('imagenes/fondoperfil.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.perfil-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 550px;
+    min-height: 550px;
+    position: relative;
+    padding-bottom: 90px;
+}
+
+.logo-perfil {
+    position: relative;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-perfil i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 48px;
+    color: #3B4C66;
+}
+
+.logo-perfil h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #3B4C66;
+}
+
+.form-group-perfil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.campo-label-perfil {
+    width: 180px;
+    font-weight: bold;
+}
+
+.form-control-perfil {
+    flex: 1;
+    font-size: 16px;
+}
+
+.icono-detalle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.icono-circulo-perfil {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+.icono-circulo-perfil i {
+    font-size: 24px;
+    color: #3B4C66;
+}
+
+/* Botón guardar abajo derecha */
+.guardar {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.btn-perfil-guardar {
+    background: #3B4C66;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+.btn-perfil-guardar:hover {
+    background: #2C3E50;
+}
+
+/* ============================
+     Estilos Mis Pedidos
+============================ */
+
+.body-pedidos {
+    background-image: url('imagenes/fondopedidos.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+.tarjeta-centro {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+}
+
+.card-pedido {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.card-pedido:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.badge-estado {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.estado-pendiente { background-color: #ffc107; color: black; }
+.estado-preparando { background-color: #17a2b8; color: white; }
+.estado-en_camino { background-color: #007bff; color: white; }
+.estado-entregado { background-color: #28a745; color: white; }
+
+/* BOTÓN REDONDO ESTILO CARRITO */
+.icono-circulo-pedidos {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+.icono-inicio-pedidos i {
+    font-size: 24px;
+    color: #000;
+}
+
+.titulo-pedidos {
+    position: relative;
+    padding-right: 80px; 
+}
+
+.icono-pedidos {
+    position: absolute;
+    top: -25px;
+    right: -25px;
+}
+
+/* ============================
+      Estilos Registro
+============================ */
+
+.body-registro {
+    background-image: url('imagenes/fondoregistro.jpg'); 
+    background-size: cover; /* La imagen cubre toda la pantalla */ 
+    background-position: center; /* Centrada */ 
+    background-repeat: no-repeat; /* No se repite */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+.registro-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 550px;
+}
+.registro-card h1 {
+    color: #ffc107;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.campo-label-registro { 
+    width: 180px; 
+    margin-bottom: 0; 
+    font-weight: bold; 
+}
+.form-group-registro { 
+    display: flex; 
+    align-items: center;
+}
+.form-control-registro {
+    flex: 1;
+    font-size: 16px;
+}
+.form-group-registro label {
+    font-weight: bold;
+}
+.btn-lg {
+    font-size: 16px;
+}
+
+
+/* ============================
+        Estilos Login
+============================ */
+
+.body-login {
+    background-image: url('imagenes/fondologin.jpg'); 
+    background-size: cover; /* La imagen cubre toda la pantalla */ 
+    background-position: center; /* Centrada */ 
+    background-repeat: no-repeat; /* No se repite */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.login-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 550px;
+}
+
+.logo-login {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #ff6b35;
+}
+
+.logo-login i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 48px;
+    color: #ff6b35;
+}
+
+.logo-login h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffc107;
+}
+
+.logo-login h4 {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #666;
+}
+.campo-label-login { 
+    width: 30%;
+    margin-bottom: 0; 
+    font-weight: bold; 
+}
+.form-group-login {
+    display: flex; 
+    align-items: center; 
+    position: relative; 
+    margin-bottom: 1rem; 
+
+}
+.form-control-login {
+    flex: 1; 
+    font-size: 16px;
+    width: 100%;
+    margin-left: 20px;
+}
+
+/* ============================
+    Estilos Editar Usuario
+============================ */
+
+ .body-editar {
+    background-image: url('imagenes/fondo_adminusuarios.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.editar-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 500px;
+    position: relative; 
+    padding-bottom: 90px; 
+}
+
+.logo-editar {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-editar i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 48px;
+    color: #3B4C66;
+}
+
+.logo-editar h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #3B4C66;
+}
+
+.form-group-editar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.campo-label-editar {
+    width: 180px;
+    font-weight: bold;
+}
+
+.form-control-editar {
+    flex: 1;
+    font-size: 16px;
+}
+
+.btn-guardar {
+    background: #3B4C66;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-guardar:hover {
+    background: #2C3E50;
+}
+
+.btn-cancelar {
+    background: #ff6b35;
+    border: none;
+    font-weight: bold;
+}
+
+.btn-cancelar:hover {
+    background: #e65c2d;
+}
+
+.titulo-detalle {
+    position: relative;
+    padding-left: 25px;
+    text-align: center;
+}
+
+.icono-detalle {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.icono-circulo-editar {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+.icono-circulo-editar i {
+    font-size: 24px;
+    color: #000;
+    margin-top: 10px;
+}
+
+/* Botón guardar abajo a la derecha */
+.guardar {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.btn-guardar {
+    background: #3B4C66;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+}
+
+.btn-guardar:hover {
+    background: #2C3E50;
+}
+
+/* ============================
+     Estilos del Carrito 
+============================ */
+.body-carrito {
+    background: #f8f9fa; 
+    min-height: 100vh; 
+    padding: 40px 0;
+}
+
+.carrito-header {
+    background: #3B4C66;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.table-carrito th {
+    background-color: #f8f9fa;
+}
+.btn-eliminar {
+    color: #dc3545;
+    background: none;
+    border: none;
+}
+.resumen-pedido {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* ============================
+  Estilos de Añadir Productos
+============================ */
+
+.body-anadir-productos {
+    background-image: url('imagenes/fondoproductos.jpg'); 
+    background-size: cover; /* La imagen cubre toda la pantalla */ 
+    background-position: center; /* Centrada */ 
+    background-repeat: no-repeat; /* No se repite */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.anadir-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 700px;
+}
+.anadir-card h1,
+.anadir-card h3 {
+    color: #800000;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.logo-anadir {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff6b35;
+}
+
+.logo-anadir i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 48px;
+    color: #ff6b35;
+}
+
+.logo-anadir h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffc107;
+}
+
+.logo-anadir h4 {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #666;
+}
+
+.campo-label-anadir { 
+    width: 180px; 
+    margin-bottom: 0; 
+    font-weight: bold; 
+}
+
+.form-group-anadir { 
+    display: flex; 
+    align-items: center;
+}
+
+.form-control-anadir {
+    flex: 1;
+    font-size: 16px;
+}
+
+.form-group-anadir label {
+    font-weight: bold;
+}
+
+.btn-lg {
+    font-size: 16px;
+}
+
+.position-relative .fa-eye,
+.position-relative .fa-eye-slash {
+    font-size: 18px;
+    color: #555;
+}
+input[type="file"] {
+    font-size: 15px;
+    padding: 6px 10px;
+}
+
+/* ============================
+  Estilos de Admin Usuarios
+============================ */
+
+.body-admin-usuarios {
+    background-image: url('imagenes/fondo_adminusuarios.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.admin-card {
+    background: white;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    width: 100%;
+    max-width: 1100px;
+    position: relative;
+}
+
+.icono-admin {
+    width: 90px;
+    height: 90px;
+    background: #3B4C66;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    margin: 0 auto 20px;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #3B4C66;
+    margin-bottom: 25px;
+}
+
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: #3B4C66;
+    color: white;
+    text-align: center;
+}
+
+.btn-editar {
+    background: #ffc107;
+    border: none;
+    color: black;
+    font-weight: bold;
+}
+
+.btn-editar:hover {
+    background: #e0a800;
+}
+
+
+.tabla-centro {
+    width: 90%;
+    margin: 0 auto;
+}
+.titulo-detalle {
+    position: relative;
+    padding-right: 80px;
+}
+
+.icono-detalle {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.icono-circulo-admin {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+.icono-circulo-admin i {
+    font-size: 24px;
+    color: #3B4C66;
+}
+.bloque-gestion-titulo {
+    display: inline-block;
+    text-align: center;
+}
+.titulo-detalle {
+    position: relative;
+    padding-right: 0px;
+    text-align: center;
+}
+.icono-admin {
+    margin: 0 auto;
+}
+.badge-estado {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-block;
+}
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
 }
