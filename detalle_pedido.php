@@ -2,13 +2,17 @@
 session_start(); // Inicia la sesión
 require 'conexion.php'; // Conexión a la base de datos
 
-// Verificar que el usuario está logueado
+// ===============================
+// VERIFICAR LOGIN
+// ===============================
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: login.php');
     exit();
 }
 
-// Verificar que llega un ID de pedido
+// ===============================
+// VERIFICAR QUE LLEGA UN ID
+// ===============================
 if (!isset($_GET['id'])) {
     header('Location: mis_pedidos.php');
     exit();
@@ -16,7 +20,9 @@ if (!isset($_GET['id'])) {
 
 $pedido_id = (int)$_GET['id']; // ID del pedido convertido a entero
 
-// Obtener datos del pedido
+// ===============================
+// OBTENER DATOS DEL PEDIDO
+// ===============================
 $sql_pedido = "SELECT * FROM pedidos WHERE id = $pedido_id";
 $resultado_pedido = $mysqli->query($sql_pedido);
 $pedido = $resultado_pedido->fetch_assoc();
@@ -27,7 +33,18 @@ if (!$pedido) {
     exit();
 }
 
-// Obtener productos del pedido
+// ===============================
+// CONTROL DE ACCESO
+// ===============================
+// Si NO es admin y el pedido NO es suyo → fuera
+if ($_SESSION['administrador'] != 1 && $pedido['usuario_id'] != $_SESSION['usuario_id']) {
+    header('Location: mis_pedidos.php');
+    exit();
+}
+
+// ===============================
+// OBTENER PRODUCTOS DEL PEDIDO
+// ===============================
 $sql_detalles = "
     SELECT d.*, p.nombre, p.imagen 
     FROM detalles_de_pedidos d
@@ -37,16 +54,17 @@ $sql_detalles = "
 
 $detalles = $mysqli->query($sql_detalles);
 
-// Si el admin cambia el estado del pedido
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1) {
+// ===============================
+// CAMBIAR ESTADO (solo admin)
+// ===============================
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['administrador'] == 1) {
     $nuevo_estado = $_POST['estado'];
     $sql_update = "UPDATE pedidos SET estado = '$nuevo_estado' WHERE id = $pedido_id";
     $mysqli->query($sql_update);
-    header("Location: detalle_pedido.php?id=$pedido_id"); // Recargar página
+    header("Location: detalle_pedido.php?id=$pedido_id");
     exit();
 }
 ?>
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -128,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['administrador']) &
                 <br>
 
                 <!-- Formulario para cambiar estado (solo admin) -->
-                <?php if (isset($_SESSION['administrador']) && $_SESSION['administrador'] == 1): ?>
+                <?php if ($_SESSION['administrador'] == 1): ?>
                     <form method="POST" class="mt-3">
                         <label><strong>Cambiar estado:</strong></label>
 
