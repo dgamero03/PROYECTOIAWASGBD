@@ -683,6 +683,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Fondo fijo para que no se extienda */
     min-height: 100vh;
     padding: 40px 0;
 }
