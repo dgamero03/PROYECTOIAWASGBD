@@ -1,85 +1,102 @@
 /* ============================
    ESTILOS GENERALES
 ============================ */
+
+/* Fondo general y tipografía base */
 body {
-    background-color: #fff8f0;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
+    background-color: #fff8f0; /* Color cálido de fondo */
+    font-family: 'Segoe UI', sans-serif; /* Fuente principal */
+    font-size: 17px; /* Tamaño base */
+    line-height: 1.6; /* Mejora la lectura */
 }
 
+/* Contenedor principal centrado */
 .contenedor-principal {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado */
+    overflow-x: hidden; /* Evita scroll lateral */
 }
 
 /* ============================
    CABECERA PRINCIPAL
 ============================ */
+
+/* Cabecera superior con fondo claro */
 .cabecera-principal {
-    background-color: #f8f1e4;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    text-align: center;
-    position: relative;
+    background-color: #f8f1e4; /* Fondo beige */
+    padding-top: 60px; /* Espaciado superior */
+    padding-bottom: 60px; /* Espaciado inferior */
+    text-align: center; /* Centrado del contenido */
+    position: relative; /* Necesario para posicionar iconos */
 }
 
 /* ============================
    ICONOS CIRCULARES
 ============================ */
 
+/* Estilo base de los iconos redondos */
 .icono-circulo {
-    position: absolute;
-    top: 20px;
-    width: 65px;
+    position: absolute; /* Posición flotante */
+    top: 20px; /* Separación superior */
+    width: 65px; /* Tamaño del círculo */
     height: 65px;
-    background-color: white;
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(0,0,0,0.25);
-    display: flex;
+    background-color: white; /* Fondo blanco */
+    border-radius: 50%; /* Forma circular */
+    box-shadow: 0 0 6px rgba(0,0,0,0.25); /* Sombra */
+    display: flex; /* Centrado interno */
     align-items: center;
     justify-content: center;
-    z-index: 10;
-    text-decoration: none;
+    z-index: 10; /* Encima del contenido */
+    text-decoration: none; /* Sin subrayado */
 }
 
+/* Icono del carrito */
 .icono-carrito i {
-    font-size: 30px;
-    color: #800000;
+    font-size: 30px; /* Tamaño del icono */
+    color: #800000; /* Color vino */
     line-height: 1;
     display: block;
 }
 
+/* Efecto hover del carrito */
 .icono-carrito i:hover {
-    transform: scale(1.3);
+    transform: scale(1.3); /* Aumenta tamaño */
 }
 
+/* Efecto hover del icono menú */
 .icono-menu img:hover {
     transform: scale(1.1);
 }
 
+/* Imagen dentro del icono circular */
 .icono-circulo img {
-    width: 55px;
+    width: 55px; /* Tamaño del icono */
     height: auto;
 }
 
+/* Posición izquierda del icono menú */
 .icono-menu { left: 20px; }
+
+/* Posición derecha del icono carrito */
 .icono-carrito { right: 20px; }
 
 /* ============================
    LOGO CENTRAL
 ============================ */
+
+/* Contenedor del logo centrado */
 .contenedor-logo {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Rombo decorativo del logo */
 .logo-rombo {
-    background-color: #800000;
-    border: 4px solid #f6c453;
-    padding: 30px;
-    transform: rotate(45deg);
+    background-color: #800000; /* Fondo vino */
+    border: 4px solid #f6c453; /* Borde dorado */
+    padding: 30px; /* Espaciado interno */
+    transform: rotate(45deg); /* Forma de rombo */
     width: 180px;
     height: 180px;
     display: flex;
@@ -87,8 +104,9 @@ body {
     justify-content: center;
 }
 
+/* Imagen del logo corregida para compensar el giro */
 .logo-rombo img {
-    transform: rotate(-45deg);
+    transform: rotate(-45deg); /* Corrige el giro del rombo */
     width: 180px;
     height: auto;
 }
@@ -96,35 +114,36 @@ body {
 /* ============================
    NAVBAR PRINCIPAL
 ============================ */
+
+/* Barra de navegación principal */
 .navbar-principal {
-    background-color: #800000;
-    padding: 10px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    background-color: #800000; /* Fondo vino */
+    padding: 10px 0; /* Espaciado vertical */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Sombra inferior */
 }
 
+/* Contenedor interno del navbar */
 .navbar-principal .container-fluid {
     max-width: 100%;
-    display: flex;
-    justify-content: end;
+    display: flex; /* Elementos en fila */
+    justify-content: end; /* Alineados a la derecha */
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite salto en móvil */
+    gap: 7%; /* Separación entre elementos */
 }
 
-.navbar-principal .container-fluid {
-    flex-wrap: wrap;
-    gap: 7%;
-}
-
+/* Enlaces del navbar */
 .navbar-principal a,
 .navbar-principal span {
-    color: white;
-    font-weight: 600;
-    margin: 0 15px;
-    text-decoration: none;
+    color: white; /* Texto blanco */
+    font-weight: 600; /* Negrita */
+    margin: 0 15px; /* Separación lateral */
+    text-decoration: none; /* Sin subrayado */
 }
 
+/* Hover de los enlaces */
 .navbar-principal a:hover {
-    color: #ffe6d5;
+    color: #ffe6d5; /* Color más claro */
     text-decoration: underline;
 }
 
@@ -132,189 +151,190 @@ body {
        BLOQUE TÍTULO
 ============================ */
 
+/* Caja del título principal */
 .bloque-titulo {
-    background-color: #800000;
+    background-color: #800000; /* Fondo vino */
     color: white;
-    padding: 25px;
-    border-radius: 10px;
+    padding: 25px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
     margin-top: 30px;
     text-align: center;
     margin-bottom: 30px;
 }
 
-.bloque-titulo h1{
-    font-size: 2.8rem;
-    font-weight: 700;
-    font-family: 'Georgia', serif;
-    color: #f6c453;                 
+/* Título principal */
+.bloque-titulo h1 {
+    font-size: 2.8rem; /* Tamaño grande */
+    font-weight: 700; /* Negrita */
+    font-family: 'Georgia', serif; /* Fuente elegante */
+    color: #f6c453; /* Dorado */
     margin-bottom: 10px;
 }
 
-.bloque-titulo p{
+/* Subtítulo */
+.bloque-titulo p {
     font-size: 1.2rem;
     font-weight: 500;
     margin: 10px 0;
-    opacity: 0.95;
+    opacity: 0.95; /* Ligera transparencia */
 }
-
 
 /* ============================
-   PRODUCTOS
+   PRODUCTOS (tarjetas)
 ============================ */
+
+/* Tarjeta de producto */
 .producto {
-    height: 100%; 
-    display: flex; 
-    flex-direction: column;
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* Imagen arriba, botón abajo */
     background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra suave */
     padding: 15px;
-    transition: transform 0.3s;
+    transition: transform 0.3s; /* Animación hover */
 }
 
+/* El formulario siempre queda abajo */
 .producto form {
     margin-top: auto;
 }
 
+/* Descripción ocupa el espacio disponible */
 .producto p {
     flex-grow: 1;
 }
 
+/* Negrita del nombre */
 .producto strong {
-  display: block;
-  margin-bottom: 10px;
+    display: block;
+    margin-bottom: 10px;
 }
 
+/* Efecto hover */
 .producto:hover {
-    transform: scale(1.03);
+    transform: scale(1.03); /* Aumenta ligeramente */
 }
 
+/* Imagen del producto */
 .producto img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+    width: 100%; /* Ocupa todo el ancho */
+    height: 180px; /* Altura fija */
+    object-fit: cover; /* Recorta sin deformar */
     border-radius: 8px;
 }
 
+/* ============================
+   CARROUSEL MÁS VENDIDOS
+============================ */
+
+/* Espaciado del carrusel */
 #carouselVendidos {
     margin-bottom: 40px;
+    min-height: 450px; /* Altura mínima */
 }
 
+/* Iconos de navegación del carrusel */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #800000;
-    border-radius: 50%;
+    background-color: #800000; /* Fondo vino */
+    border-radius: 50%; /* Forma circular */
     padding: 10px;
+}
+
+/* Título decorado */
+.titulo-combinado {
+    display: inline-block;
+    background: #800000;
+    color: #f6c453; /* Dorado */
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 3px solid #f6c453; /* Borde dorado */
+}
+
+/* Color dorado */
+.titulo-color {
+    color: #f6c453;
 }
 
 /* ============================
           FOOTER 
 ============================ */
 
+/* Pie de página con fondo vino y borde dorado */
 .footer-cheese {
-    background: #800000;
-    color: white;
-    padding: 25px;
-    border-radius: 10px;
-    border: 3px solid #f6c453;
-    margin-top: 40px;
+    background: #800000; /* Fondo vino */
+    color: white; /* Texto blanco */
+    padding: 25px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 3px solid #f6c453; /* Borde dorado */
+    margin-top: 40px; /* Separación superior */
 }
 
+/* Título del footer */
 .footer-cheese .footer-titulo {
-    color: #f6c453;
-    font-weight: 700;
+    color: #f6c453; /* Dorado */
+    font-weight: 700; /* Negrita */
     margin-bottom: 15px;
 }
 
+/* Líneas de texto del footer */
 .footer-cheese .footer-linea {
     margin: 0;
     font-size: 16px;
 }
 
+/* Separador decorativo */
 .footer-cheese .footer-separador {
     border: none;
-    border-top: 2px solid #f6c453;
+    border-top: 2px solid #f6c453; /* Línea dorada */
     width: 60%;
     margin: 20px auto;
 }
 
+/* Texto inferior */
 .footer-cheese .footer-texto {
     margin-top: 15px;
     margin-bottom: 0;
 }
 
+/* Subtexto */
 .footer-cheese .footer-subtexto {
     margin: 0;
     font-size: 14px;
-    opacity: 0.9;
-}
-
-
-/* ================================
-   AJUSTES PARA MOVILES Y TABLETS
- ================================ */
-@media (max-width: 768px) {
-    .navbar-principal .container-fluid {
-        flex-direction: column;
-        align-items: flex-end;
-    }
-
-    .navbar-principal a,
-    .navbar-principal span {
-        margin: 5px 0;
-    }
-
-    .icono-circulo {
-        width: 50px;
-        height: 50px;
-        top: 10px;
-    }
-
-    .icono-circulo img,
-    .icono-circulo i {
-        width: 36px;
-        font-size: 22px;
-    }
-
-    .logo-rombo {
-        width: 100px;
-        height: 100px;
-        padding: 10px;
-    }
-
-    .logo-rombo img {
-        width: 120px;
-    }
-
-    .bloque-titulo h1 {
-        font-size: 26px;
-    }
-
-    .producto img {
-        height: 140px;
-    }
+    opacity: 0.9; /* Ligera transparencia */
 }
 
 /* ============================
         ESTILOS CARTA
 ============================ */
+
+/* Contenedor general de la carta */
 .contenedor-carta {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrado */
 }
 
+/* Menú superior de categorías */
 .carta-menu .container-fluid { 
-    display: flex;
-    justify-content: center; 
+    display: flex; /* Elementos en fila */
+    justify-content: center; /* Centrado */
 }
+
+/* Enlaces de categorías */
 .carta-menu a {
-    margin: 0 20px;
+    margin: 0 20px; /* Separación lateral */
     font-size: 18px;
     font-weight: 600;
 }
 
+/* Título de cada categoría */
 .categoria-titulo {
-    background-color: #800000;
+    background-color: #800000; /* Fondo vino */
     color: white;
     padding: 10px 20px;
     border-radius: 10px;
@@ -322,28 +342,32 @@ body {
     display: inline-block;
 }
 
+/* Tarjeta de producto en la carta */
 .card-producto { 
     width: 100%;
-    height: 100%; 
-    border: 1px solid #ddd; 
-    border-radius: 10px; 
-    display: flex; 
-    flex-direction: column; 
+    height: 100%;
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Efecto hover */
 .card-producto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-5px); /* Se eleva */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra */
 }
 
+/* Imagen del producto */
 .img-producto {
     width: 100%;
     height: 160px;
-    object-fit: cover;
+    object-fit: cover; /* Recorte sin deformar */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
+/* Texto superpuesto (si se usa) */
 .info-local {
     position: absolute;
     top: 110px;
@@ -355,41 +379,51 @@ body {
     z-index: 10;
 }
 
+/* Centrado de texto */
 .centrado {
     text-align: center;
     width: 100%;
     display: block;
 }
 
-/* Distribuir contenido */
+/* Contenido interno de la tarjeta */
 .card-producto .card-body {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; 
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
 }
 
+/* Nombre del producto */
 .card-producto h5 {
     font-size: 15px;
     margin-bottom: 6px;
 }
+
+/* Formulario siempre abajo */
 .card-producto form { 
-    margin-top: auto; 
+    margin-top: auto;
 }
+
+/* Descripción */
 .card-producto .card-text {
     font-size: 13px;
-    flex-grow: 1; 
+    flex-grow: 1;
     margin-bottom: 8px;
 }
 
+/* Contenedor de precio y botón */
 .card-producto .d-flex {
-    margin-top: auto; 
+    margin-top: auto;
 }
 
+/* Botón añadir */
 .card-producto .btn {
     font-size: 13px;
     padding: 6px 10px;
 }
+
+/* Icono de información */
 .icono-info {
     position: absolute;
     left: 20px;
@@ -400,6 +434,7 @@ body {
     z-index: 999;
 }
 
+/* Colores por categoría */
 .icono-categoria-bebidas { color: #00bcd4; }
 .icono-categoria-entrantes { color: #cfd8dc; }
 .icono-categoria-baguettes { color: #d7b894; }
@@ -407,23 +442,27 @@ body {
 .icono-categoria-pizzas { color: #fbc02d; }
 .icono-categoria-postres { color: #80deea; }
 
+/* Imagen especial para bebidas */
 .img-bebida {
     height: 220px;
-    background-color: #fff; 
+    background-color: #fff;
     padding: 10px;
-    object-fit: contain;
+    object-fit: contain; /* No recorta la imagen */
 }
 
 /* ============================
       Estilos Panel Admin
 ============================ */
 
+/* Contenedor del panel admin */
 .contenedor-admin {
-    max-width: 70%;
+    max-width: 70%; /* Más estrecho para enfoque */
     margin: 0 auto;
 }
+
+/* Cabecera del panel */
 .admin-header {
-    background: linear-gradient(to right, #343a40, #6c757d);
+    background: linear-gradient(to right, #343a40, #6c757d); /* Degradado gris */
     color: white;
     padding: 25px 0;
     margin-top: 20px;
@@ -431,6 +470,8 @@ body {
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+
+/* Tarjetas de estadísticas */
 .card-stat {
     border: none;
     border-radius: 10px;
@@ -438,11 +479,14 @@ body {
     padding: 20px;
     margin-bottom: 20px;
 }
+
+/* Colores por módulo */
 .stat-pedidos { background: linear-gradient(to right, #007bff, #0056b3); }
 .stat-usuarios { background: linear-gradient(to right, #dc3545, #c82333); }
 .stat-productos { background: linear-gradient(to right, #ffc107, #e0a800); }
 .stat-ingresos { background: linear-gradient(to right, #28a745, #1e7e34); }
 
+/* Tarjetas de módulos */
 .card-modulo {
     border: none;
     border-radius: 10px;
@@ -450,10 +494,14 @@ body {
     margin-bottom: 20px;
     transition: transform 0.3s;
 }
+
+/* Hover de módulos */
 .card-modulo:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+
+/* Botón de módulo */
 .btn-modulo {
     display: block;
     background-color: #bbbbbbff;
@@ -465,12 +513,39 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Hover del botón */
 .btn-modulo:hover {
     background-color: #797979ff;
-    color: #ffffffff;
+    color: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* Botón verde de inicio */
+.btn-inicio {
+    background: #28a745;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: 700;
+    border: none;
+}
+
+/* Mantener verde en Volver al Inicio */
+.btn.btn-inicio:hover,
+.btn.btn-inicio:focus,
+.btn.btn-inicio:active {
+    background-color: #218838;
+    color: #fff;
+    box-shadow: none;
+}
+
+/* Botón cerrar sesión */
+.btn-cerrar {
+    font-weight: 700;
+}
+
+/* Contenedor general del panel */
 .panel-admin {
     border-radius: 15px;
     padding: 20px;
@@ -480,43 +555,48 @@ body {
       Estilos Perfil
 ============================ */
 
+/* Fondo del área de perfil */
 .body-perfil {
-    background-image: url('imagenes/fondoperfil.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
+    background-image: url('imagenes/fondogestiones.jpg'); /* Imagen de fondo */
+    background-size: cover; /* Cubre toda la pantalla */
+    background-position: center; /* Centrada */
+    background-repeat: no-repeat; /* No se repite */
+    min-height: 100vh; /* Ocupa toda la altura */
+    display: flex; /* Centrado vertical */
     align-items: center;
     justify-content: center;
     padding: 40px 0;
 }
 
+/* Tarjeta del perfil */
 .perfil-card {
-    background: white;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background: white; /* Fondo blanco */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 40px; /* Espaciado interno */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra */
     width: 100%;
-    max-width: 550px;
+    max-width: 550px; /* Ancho máximo */
     min-height: 550px;
-    position: relative;
-    padding-bottom: 90px;
+    position: relative; /* Para botón guardar */
+    padding-bottom: 90px; /* Espacio para el botón */
 }
 
+/* Contenedor del icono y título */
 .logo-perfil {
     position: relative;
     text-align: center;
     margin-bottom: 40px;
 }
 
+/* Icono del perfil */
 .logo-perfil i {
     display: block;
     margin-bottom: 10px;
-    font-size: 48px;
-    color: #3B4C66;
+    font-size: 48px; /* Tamaño grande */
+    color: #3B4C66; /* Azul grisáceo */
 }
 
+/* Título del perfil */
 .logo-perfil h3 {
     margin: 0;
     font-size: 28px;
@@ -524,28 +604,33 @@ body {
     color: #3B4C66;
 }
 
+/* Grupo de campos */
 .form-group-perfil {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
+/* Etiqueta del campo */
 .campo-label-perfil {
-    width: 180px;
+    width: 180px; /* Ancho fijo */
     font-weight: bold;
 }
 
+/* Input del perfil */
 .form-control-perfil {
-    flex: 1;
+    flex: 1; /* Ocupa el espacio restante */
     font-size: 16px;
 }
 
+/* Icono volver */
 .icono-detalle {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
+/* Botón circular volver */
 .icono-circulo-perfil {
     width: 50px;
     height: 50px;
@@ -559,20 +644,22 @@ body {
     border: 1px solid #ccc;
 }
 
+/* Icono dentro del botón */
 .icono-circulo-perfil i {
     font-size: 24px;
     color: #3B4C66;
 }
 
-/* Botón guardar abajo derecha */
+/* Botón guardar abajo */
 .guardar {
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
 
+/* Botón guardar */
 .btn-perfil-guardar {
-    background: #3B4C66;
+    background: #3B4C66; /* Azul grisáceo */
     color: white;
     border: none;
     padding: 12px 20px;
@@ -581,6 +668,7 @@ body {
     box-shadow: 0 0 6px rgba(0,0,0,0.25);
 }
 
+/* Hover del botón */
 .btn-perfil-guardar:hover {
     background: #2C3E50;
 }
@@ -589,8 +677,9 @@ body {
      Estilos Mis Pedidos
 ============================ */
 
+/* Fondo de la página */
 .body-pedidos {
-    background-image: url('imagenes/fondopedidos.jpg'); 
+    background-image: url('imagenes/fondopedidos.jpg'); /* Imagen de fondo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -598,27 +687,31 @@ body {
     padding: 40px 0;
 }
 
+/* Tarjeta central */
 .tarjeta-centro {
     max-width: 700px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.85); /* Blanco translúcido */
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 0 25px rgba(0,0,0,0.2);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px); /* Efecto cristal */
 }
 
+/* Tarjeta de cada pedido */
 .card-pedido {
     border: 1px solid #ddd;
     border-radius: 10px;
     margin-bottom: 20px;
-    transition: all 0.3s;
+    transition: all 0.3s; /* Animación hover */
 }
 
+/* Hover */
 .card-pedido:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* Etiquetas de estado */
 .badge-estado {
     font-size: 0.9rem;
     padding: 6px 12px;
@@ -626,12 +719,13 @@ body {
     font-weight: 600;
 }
 
+/* Colores según estado */
 .estado-pendiente { background-color: #ffc107; color: black; }
 .estado-preparando { background-color: #17a2b8; color: white; }
 .estado-en_camino { background-color: #007bff; color: white; }
 .estado-entregado { background-color: #28a745; color: white; }
 
-/* BOTÓN REDONDO ESTILO CARRITO */
+/* Botón circular volver */
 .icono-circulo-pedidos {
     width: 50px;
     height: 50px;
@@ -645,16 +739,19 @@ body {
     border: 1px solid #ccc;
 }
 
+/* Icono dentro */
 .icono-inicio-pedidos i {
     font-size: 24px;
     color: #000;
 }
 
+/* Título con icono */
 .titulo-pedidos {
     position: relative;
-    padding-right: 80px; 
+    padding-right: 80px;
 }
 
+/* Posición del icono */
 .icono-pedidos {
     position: absolute;
     top: -25px;
@@ -662,129 +759,215 @@ body {
 }
 
 /* ============================
+     ESTILOS DETALLE PEDIDO
+============================ */
+
+/* Fondo */
+.body-detalle-pedido {
+    background-image: url('imagenes/fondopedidos.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 40px 0;
+}
+
+/* Colores de estado (repetidos para esta página) */
+.estado-pendiente { background-color: #ffc107; color: black; }
+.estado-preparando { background-color: #17a2b8; color: white; }
+.estado-en_camino { background-color: #007bff; color: white; }
+.estado-entregado { background-color: #28a745; color: white; }
+
+/* Tarjeta del detalle */
+.tarjeta-detalle {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    backdrop-filter: blur(6px);
+    font-size: 16px;
+}
+
+/* Título del pedido */
+.card-header h3 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* Subtítulos */
+.card-body h5 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #800000; /* Vino */
+    margin-top: 25px;
+}
+
+/* Texto */
+.card-body p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* Producto dentro del detalle */
+.producto-item {
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+/* Imagen del producto */
+.producto-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+/* Botón volver */
+.btn-volver {
+    font-size: 15px;
+    padding: 8px 16px;
+}
+
+/* Etiqueta de estado */
+.badge-estado {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* Título con icono */
+.titulo-detalle {
+    position: relative;
+    padding-right: 80px;
+}
+
+/* Icono volver */
+.icono-detalle {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Botón circular */
+.icono-circulo-pedido {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid #ccc;
+}
+
+/* Icono dentro */
+.icono-circulo-pedido i {
+    font-size: 24px;
+    color: #000;
+}
+
+/* ============================
       Estilos Registro
 ============================ */
 
+/* Fondo de la página de registro */
 .body-registro {
-    background-image: url('imagenes/fondoregistro.jpg'); 
-    background-size: cover; /* La imagen cubre toda la pantalla */ 
-    background-position: center; /* Centrada */ 
+    background-image: url('imagenes/fondoregistro.jpg'); /* Imagen de fondo */
+    background-size: cover; /* Cubre toda la pantalla */
+    background-position: center; /* Centrada */
     background-repeat: no-repeat; /* No se repite */
-    min-height: 100vh;
-    display: flex;
+    min-height: 100vh; /* Altura completa */
+    display: flex; /* Centrado vertical */
     align-items: center;
     justify-content: center;
     padding: 40px 0;
 }
+
+/* Tarjeta del formulario de registro */
 .registro-card {
-    background: white;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background-color: rgba(255, 255, 255, 0.85); /* Blanco translúcido */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 40px; /* Espaciado interno */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra */
     width: 100%;
-    max-width: 550px;
+    max-width: 550px; /* Ancho máximo */
+    backdrop-filter: blur(6px); /* Efecto cristal */
 }
+
+/* Título del registro */
 .registro-card h1 {
-    color: #ffc107;
+    color: #ffc107; /* Amarillo */
     margin-bottom: 30px;
     text-align: center;
 }
+
+/* Etiqueta de los campos */
 .campo-label-registro { 
-    width: 180px; 
-    margin-bottom: 0; 
-    font-weight: bold; 
+    width: 180px; /* Ancho fijo */
+    margin-bottom: 0;
+    font-weight: bold;
 }
+
+/* Grupo de campos */
 .form-group-registro { 
-    display: flex; 
+    display: flex;
     align-items: center;
 }
+
+/* Inputs del registro */
 .form-control-registro {
-    flex: 1;
+    flex: 1; /* Ocupa el espacio restante */
     font-size: 16px;
+    width: 100%;
 }
+
+/* Etiquetas */
 .form-group-registro label {
     font-weight: bold;
 }
+
+/* Botón grande */
 .btn-lg {
     font-size: 16px;
 }
 
+/* Contenedor del icono de mostrar contraseña */
+.password-wrapper {
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    flex: 1;
+}
+
+/* Input dentro del wrapper */
+.password-wrapper input {
+    width: 100%;
+}
+
+/* Icono del ojo */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 /* ============================
         Estilos Login
 ============================ */
 
+/* Fondo del login */
 .body-login {
-    background-image: url('imagenes/fondologin.jpg'); 
-    background-size: cover; /* La imagen cubre toda la pantalla */ 
-    background-position: center; /* Centrada */ 
-    background-repeat: no-repeat; /* No se repite */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 0;
-}
-
-.login-card {
-    background: white;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    width: 100%;
-    max-width: 550px;
-}
-
-.logo-login {
-    text-align: center;
-    margin-bottom: 60px;
-    color: #ff6b35;
-}
-
-.logo-login i {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 48px;
-    color: #ff6b35;
-}
-
-.logo-login h3 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-    color: #ffc107;
-}
-
-.logo-login h4 {
-    margin-top: 5px;
-    font-size: 18px;
-    color: #666;
-}
-.campo-label-login { 
-    width: 30%;
-    margin-bottom: 0; 
-    font-weight: bold; 
-}
-.form-group-login {
-    display: flex; 
-    align-items: center; 
-    position: relative; 
-    margin-bottom: 1rem; 
-
-}
-.form-control-login {
-    flex: 1; 
-    font-size: 16px;
-    width: 100%;
-    margin-left: 20px;
-}
-
-/* ============================
-    Estilos Editar Usuario
-============================ */
-
- .body-editar {
-    background-image: url('imagenes/fondo_adminusuarios.jpg');
+    background-image: url('imagenes/fondologin.jpg'); /* Imagen de fondo */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -795,6 +978,107 @@ body {
     padding: 40px 0;
 }
 
+/* Tarjeta del login */
+.login-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 550px;
+}
+
+/* Contenedor del icono y título */
+.logo-login {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #ff6b35; /* Naranja */
+}
+
+/* Icono */
+.logo-login i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 48px;
+    color: #ff6b35;
+}
+
+/* Título principal */
+.logo-login h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffc107;
+}
+
+/* Subtítulo */
+.logo-login h4 {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #666;
+}
+
+/* Etiqueta */
+.campo-label-login { 
+    width: 30%;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+/* Grupo de campos */
+.form-group-login {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+/* Input del login */
+.form-control-login {
+    flex: 1;
+    font-size: 16px;
+    width: 100%;
+    padding-right: 42px; /* Espacio para el icono */
+}
+
+/* Wrapper de contraseña */
+.password-wrapper {
+    position: relative;
+    overflow: visible;
+    width: 100%;
+}
+
+/* Input dentro del wrapper */
+.password-wrapper input {
+    width: 100%;
+}
+
+/* Icono del ojo */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ============================
+    Estilos Editar Usuario
+============================ */
+
+/* Fondo */
+.body-editar {
+    background-image: url('imagenes/fondogestiones.jpg'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+/* Tarjeta de edición */
 .editar-card {
     background: white;
     border-radius: 15px;
@@ -802,15 +1086,17 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     width: 100%;
     max-width: 500px;
-    position: relative; 
-    padding-bottom: 90px; 
+    position: relative; /* Para botón guardar */
+    padding-bottom: 90px;
 }
 
+/* Contenedor del icono y título */
 .logo-editar {
     text-align: center;
     margin-bottom: 30px;
 }
 
+/* Icono */
 .logo-editar i {
     display: block;
     margin-bottom: 10px;
@@ -818,6 +1104,7 @@ body {
     color: #3B4C66;
 }
 
+/* Título */
 .logo-editar h3 {
     margin: 0;
     font-size: 28px;
@@ -825,54 +1112,64 @@ body {
     color: #3B4C66;
 }
 
+/* Grupo de campos */
 .form-group-editar {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
+/* Etiqueta */
 .campo-label-editar {
     width: 180px;
     font-weight: bold;
 }
 
+/* Input */
 .form-control-editar {
     flex: 1;
     font-size: 16px;
 }
 
+/* Botón guardar */
 .btn-guardar {
     background: #3B4C66;
     border: none;
     font-weight: bold;
 }
 
+/* Hover */
 .btn-guardar:hover {
     background: #2C3E50;
 }
 
+/* Botón cancelar */
 .btn-cancelar {
     background: #ff6b35;
     border: none;
     font-weight: bold;
 }
 
+/* Hover */
 .btn-cancelar:hover {
     background: #e65c2d;
 }
 
+/* Título con icono */
 .titulo-detalle {
     position: relative;
     padding-left: 25px;
     text-align: center;
 }
 
-.icono-detalle {
+/* Posición del icono volver */
+.icono-volver {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -40px;
+    right: -40px;
 }
 
+/* Botón circular */
 .icono-circulo-editar {
     width: 50px;
     height: 50px;
@@ -886,19 +1183,21 @@ body {
     border: 1px solid #ccc;
 }
 
+/* Icono dentro */
 .icono-circulo-editar i {
     font-size: 24px;
-    color: #000;
+    color: #3B4C66;
     margin-top: 10px;
 }
 
-/* Botón guardar abajo a la derecha */
+/* Botón guardar abajo */
 .guardar {
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
 
+/* Botón guardar final */
 .btn-guardar {
     background: #3B4C66;
     color: white;
@@ -909,136 +1208,179 @@ body {
     box-shadow: 0 0 6px rgba(0,0,0,0.25);
 }
 
+/* Hover */
 .btn-guardar:hover {
     background: #2C3E50;
 }
 
 /* ============================
-     Estilos del Carrito 
+     ESTILOS DEL CARRITO 
 ============================ */
+
+/* Fondo general del carrito */
 .body-carrito {
-    background: #f8f9fa; 
-    min-height: 100vh; 
-    padding: 40px 0;
+    background: #f8f9fa; /* Gris claro */
+    min-height: 100vh; /* Altura completa */
+    padding: 20px 0;
 }
 
+/* Cabecera del carrito */
 .carrito-header {
-    background: #3B4C66;
+    background: #3B4C66; /* Azul grisáceo */
     color: white;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 30px;
 }
+
+/* Encabezado de tabla */
 .table-carrito th {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Gris claro */
 }
+
+/* Botón eliminar */
 .btn-eliminar {
-    color: #dc3545;
+    color: #dc3545; /* Rojo */
     background: none;
     border: none;
 }
+
+/* Resumen del pedido */
 .resumen-pedido {
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 10px;
 }
 
+/* Celdas centradas verticalmente */
+.table-carrito td {
+    vertical-align: middle;
+}
+
+/* Formularios dentro de la tabla */
+.table-carrito td form {
+    display: flex;
+    justify-content: center;
+}
+
+/* Input de cantidad */
+.input-cantidad {
+    width: 70px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Cabecera mejorada */
+.carrito-header {
+    background: #3B4C66;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+/* Título */
+.carrito-header h1 {
+    font-size: 26px;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+/* Subtítulo */
+.carrito-header p {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* Tabla estilizada */
+.table-carrito {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Encabezado */
+.table-carrito th {
+    background: #3B4C66;
+    color: white;
+    font-weight: 600;
+    border: none;
+    font-size: 15px;
+}
+
+/* Celdas */
+.table-carrito td {
+    background: white;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+
+/* Hover */
+.table-carrito tr:hover td {
+    background: #f3f6fa;
+}
+
+/* Tarjeta del carrito */
+.card {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Resumen del pedido mejorado */
+.resumen-pedido {
+    background: white;
+    border: 2px solid #3B4C66;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+}
+
+/* Título del resumen */
+.resumen-pedido h4 {
+    font-weight: 700;
+    color: #3B4C66;
+}
+
+/* Botón confirmar */
+.btn-success {
+    background: #28a745;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: 700;
+    border: none;
+}
+
+/* Hover */
+.btn-success:hover {
+    background: #218838;
+}
+
+/* Botón vaciar */
+.btn-outline-danger {
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* Input cantidad mejorado */
+.input-cantidad {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Separador */
+.espacio {
+    margin-top: 8px;
+}
+
 /* ============================
   Estilos de Añadir Productos
 ============================ */
 
+/* Fondo */
 .body-anadir-productos {
-    background-image: url('imagenes/fondoproductos.jpg'); 
-    background-size: cover; /* La imagen cubre toda la pantalla */ 
-    background-position: center; /* Centrada */ 
-    background-repeat: no-repeat; /* No se repite */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 0;
-}
-
-.anadir-card {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    width: 100%;
-    max-width: 700px;
-}
-.anadir-card h1,
-.anadir-card h3 {
-    color: #800000;
-    margin-bottom: 30px;
-    text-align: center;
-}
-.logo-anadir {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #ff6b35;
-}
-
-.logo-anadir i {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 48px;
-    color: #ff6b35;
-}
-
-.logo-anadir h3 {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-    color: #ffc107;
-}
-
-.logo-anadir h4 {
-    margin-top: 5px;
-    font-size: 18px;
-    color: #666;
-}
-
-.campo-label-anadir { 
-    width: 180px; 
-    margin-bottom: 0; 
-    font-weight: bold; 
-}
-
-.form-group-anadir { 
-    display: flex; 
-    align-items: center;
-}
-
-.form-control-anadir {
-    flex: 1;
-    font-size: 16px;
-}
-
-.form-group-anadir label {
-    font-weight: bold;
-}
-
-.btn-lg {
-    font-size: 16px;
-}
-
-.position-relative .fa-eye,
-.position-relative .fa-eye-slash {
-    font-size: 18px;
-    color: #555;
-}
-input[type="file"] {
-    font-size: 15px;
-    padding: 6px 10px;
-}
-
-/* ============================
-  Estilos de Admin Usuarios
-============================ */
-
-.body-admin-usuarios {
-    background-image: url('imagenes/fondo_adminusuarios.jpg');
+    background-image: url('imagenes/fondoproductos.jpg'); /* Fondo temático */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1049,6 +1391,115 @@ input[type="file"] {
     padding: 40px 0;
 }
 
+/* Tarjeta */
+.anadir-card {
+    background-color: rgba(255, 255, 255, 0.85); /* Blanco translúcido */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 700px;
+    backdrop-filter: blur(6px);
+}
+
+/* Títulos */
+.anadir-card h1,
+.anadir-card h3 {
+    color: #800000; /* Vino */
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Icono */
+.logo-anadir {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff6b35;
+}
+
+/* Icono */
+.logo-anadir i {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 48px;
+    color: #ff6b35;
+}
+
+/* Subtítulo */
+.logo-anadir h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffc107;
+}
+
+/* Subtexto */
+.logo-anadir h4 {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #666;
+}
+
+/* Etiquetas */
+.campo-label-anadir { 
+    width: 180px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+/* Grupo */
+.form-group-anadir { 
+    display: flex;
+    align-items: center;
+}
+
+/* Inputs */
+.form-control-anadir {
+    flex: 1;
+    font-size: 16px;
+}
+
+/* Etiquetas */
+.form-group-anadir label {
+    font-weight: bold;
+}
+
+/* Botón grande */
+.btn-lg {
+    font-size: 16px;
+}
+
+/* Iconos de contraseña */
+.position-relative .fa-eye,
+.position-relative .fa-eye-slash {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Input file */
+input[type="file"] {
+    font-size: 15px;
+    padding: 6px 0px;
+}
+
+/* ============================
+  Estilos de Admin Usuarios
+============================ */
+
+/* Fondo */
+.body-admin-usuarios {
+    background-image: url('imagenes/fondogestiones.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+/* Tarjeta */
 .admin-card {
     background: white;
     border-radius: 15px;
@@ -1059,6 +1510,7 @@ input[type="file"] {
     position: relative;
 }
 
+/* Icono */
 .icono-admin {
     width: 90px;
     height: 90px;
@@ -1072,6 +1524,7 @@ input[type="file"] {
     margin: 0 auto 20px;
 }
 
+/* Título */
 h2 {
     text-align: center;
     font-weight: bold;
@@ -1079,18 +1532,21 @@ h2 {
     margin-bottom: 25px;
 }
 
+/* Tabla */
 .table {
     background: white;
     border-radius: 10px;
     overflow: hidden;
 }
 
+/* Encabezado */
 .table thead {
     background: #3B4C66;
     color: white;
     text-align: center;
 }
 
+/* Botón editar */
 .btn-editar {
     background: #ffc107;
     border: none;
@@ -1098,26 +1554,31 @@ h2 {
     font-weight: bold;
 }
 
+/* Hover */
 .btn-editar:hover {
     background: #e0a800;
 }
 
-
+/* Tabla centrada */
 .tabla-centro {
     width: 90%;
     margin: 0 auto;
 }
+
+/* Título */
 .titulo-detalle {
     position: relative;
     padding-right: 80px;
 }
 
+/* Icono */
 .icono-detalle {
     position: absolute;
     top: 0;
     right: 0;
 }
 
+/* Botón circular */
 .icono-circulo-admin {
     width: 50px;
     height: 50px;
@@ -1131,22 +1592,31 @@ h2 {
     border: 1px solid #ccc;
 }
 
+/* Icono dentro */
 .icono-circulo-admin i {
     font-size: 24px;
     color: #3B4C66;
 }
+
+/* Título centrado */
 .bloque-gestion-titulo {
     display: inline-block;
     text-align: center;
 }
+
+/* Ajuste */
 .titulo-detalle {
     position: relative;
     padding-right: 0px;
     text-align: center;
 }
+
+/* Icono centrado */
 .icono-admin {
     margin: 0 auto;
 }
+
+/* Etiquetas de estado */
 .badge-estado {
     font-size: 0.8rem;
     padding: 4px 8px;
@@ -1155,8 +1625,769 @@ h2 {
     white-space: nowrap;
     display: inline-block;
 }
+
+/* Celdas centradas */
 .table th,
 .table td {
     text-align: center;
     vertical-align: middle;
+}
+
+/* ================================
+       AJUSTES PARA MOVILES
+ ================================ */
+@media (max-width: 767px) {
+
+    /* Navbar en columna para que no se desborde */
+    .navbar-principal .container-fluid {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    /* Enlaces más compactos */
+    .navbar-principal a,
+    .navbar-principal span {
+        margin: 5px 0;
+    }
+
+    /* Iconos circulares más pequeños */
+    .icono-circulo {
+        width: 50px;
+        height: 50px;
+        top: 10px;
+    }
+
+    /* Ajuste del tamaño del icono dentro del círculo */
+    .icono-circulo img,
+    .icono-circulo i {
+        width: 36px;
+        font-size: 22px;
+    }
+
+    /* Logo central reducido */
+    .logo-rombo {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+    }
+
+    .logo-rombo img {
+        width: 120px;
+    }
+
+    /* Título principal más pequeño */
+    .bloque-titulo h1 {
+        font-size: 26px;
+    }
+
+    /* Imagen de producto más baja */
+    .producto img {
+        height: 140px;
+    }
+
+    /* ============================
+           PERFIL EN MÓVIL
+    ============================ */
+
+    .body-perfil {
+        padding: 30px 0;
+    }
+
+    /* Tarjeta más compacta */
+    .perfil-card {
+        max-width: 360px;
+        padding: 24px 22px 26px;
+        border-radius: 16px;
+        min-height: auto;
+        padding-bottom: 24px;
+    }
+
+    .logo-perfil {
+        margin-bottom: 18px;
+    }
+
+    .logo-perfil i {
+        font-size: 38px;
+        margin-bottom: 4px;
+    }
+
+    .logo-perfil h3 {
+        font-size: 22px;
+    }
+
+    /* Campos más compactos */
+    .form-group-perfil {
+        margin-bottom: 12px;
+        gap: 3px;
+    }
+
+    .campo-label-perfil {
+        width: 35%;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .form-control-perfil {
+        font-size: 14.5px;
+        padding: 8px 10px;
+        border-radius: 7px;
+    }
+
+    /* Botón guardar pasa abajo */
+    .guardar {
+        position: static;
+        margin-top: 16px;
+    }
+
+    .btn-perfil-guardar {
+        width: 100%;
+        font-size: 14.5px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    textarea.form-control-perfil {
+        resize: none;
+        height: 38px;
+        padding: 8px 10px;
+        line-height: 1.4;
+    }
+
+    /* ============================
+              CARTA EN MÓVIL
+    ============================ */
+
+    /* Rombo más pequeño */
+    .logo-rombo {
+        width: 110px;
+        height: 110px;
+        padding: 12px;
+    }
+
+    .logo-rombo img {
+        width: 110px;
+        height: auto;
+    }
+
+    /* Menú en dos filas */
+    nav.navbar-principal .container-fluid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px;
+        justify-items: center;
+    }
+
+    nav.navbar-principal a {
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    /* Ajuste de textos */
+    .card-producto h5 {
+        font-size: 16px;
+    }
+
+    .card-producto .btn {
+        padding: 2px 4px;
+        font-size: 12px;
+    }
+
+    /* Icono info más grande */
+    .icono-circulo img, .icono-circulo i {
+        font-size: 28px;
+    }
+
+    /* ============================
+              INDEX EN MÓVIL
+    ============================ */
+
+    .contenedor-principal {
+        max-width: 900px;
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    .bloque-titulo h1 {
+        font-size: 32px;
+    }
+
+    .bloque-titulo p {
+        font-size: 18px;
+    }
+
+    .producto {
+        padding: 18px;
+    }
+
+    .producto h5 {
+        font-size: 19px;
+        margin-bottom: 12px;
+    }
+
+    .producto p {
+        font-size: 16px;
+    }
+
+    .producto img {
+        height: 180px;
+    }
+
+    .producto .btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    h3.text-danger {
+        font-size: 26px;
+        font-weight: 700;
+        margin-top: 30px;
+    }
+
+    #carouselVendidos .producto {
+        max-width: 340px;
+        margin: 0 auto;
+    }
+
+    /* Footer más compacto */
+    .footer-cheese {
+        padding: 35px 20px;
+    }
+
+    .footer-cheese h5 {
+        font-size: 22px;
+    }
+
+    .footer-cheese p {
+        font-size: 16px;
+    }
+
+    /* Iconos más grandes */
+    .icono-circulo img {
+        width: 56px;
+    }
+
+    .icono-circulo {
+        width: 65px;
+        height: 65px;
+    }
+
+    .icono-carrito i {
+        font-size: 32px;
+    }
+
+    /* Ajustar logo central */
+    .logo-rombo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .logo-rombo img {
+        width: 160px;
+    }
+
+    /* Limitar descripción en novedades */
+    .novedades .producto p {
+        max-height: 100px;
+        overflow: hidden;
+    }
+
+    /* ============================
+         AÑADIR PRODUCTOS MÓVIL
+    ============================ */
+
+    /* Campos en columna */
+    .form-group-anadir {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .campo-label-anadir {
+        width: 100%;
+        max-width: 260px;
+        text-align: left;
+        margin-bottom: 6px;
+        font-size: 16px;
+    }
+
+    .form-control-anadir {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    textarea.form-control-anadir {
+        min-height: 70px;
+        resize: vertical;
+    }
+
+    input[type="file"].form-control-anadir {
+        text-align: center;
+    }
+
+    .anadir-card {
+        max-width: 400px;
+        width: 92%;
+        padding: 26px 22px;
+        border-radius: 18px;
+        backdrop-filter: blur(6px);
+    }
+
+    .logo-anadir i {
+        font-size: 46px;
+    }
+
+    .logo-anadir h3 {
+        font-size: 28px;
+    }
+
+    .logo-anadir h4 {
+        font-size: 20px;
+    }
+
+    input[type="file"] {
+        font-size: 13px;
+        padding: 4px 0px;
+    }
+
+    .anadir-card .btn {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    /* ============================
+         DETALLE DE PEDIDOS
+    ============================ */
+
+    .tarjeta-detalle {
+        max-width: 360px;
+        padding: 22px 20px;
+        border-radius: 18px;
+        font-size: 16.5px;
+    }
+
+    .card-header h3 {
+        font-size: 22px;
+    }
+
+    .card-body h5 {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .card-body p {
+        font-size: 16px;
+    }
+
+    .producto-item {
+        font-size: 15.5px;
+        padding: 12px;
+    }
+
+    .producto-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* ============================
+               REGISTRO
+    ============================ */
+
+    .form-group-registro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 14px;
+    }
+
+    .campo-label-registro {
+        width: 100%;
+        max-width: 260px;
+        text-align: left;
+        margin-bottom: 6px;
+        font-size: 16px;
+    }
+
+    .form-control-registro {
+        width: 100%;
+        max-width: 260px;
+        font-size: 15px;
+        padding: 8px 10px;
+    }
+
+    textarea.form-control-registro {
+        min-height: 70px;
+        resize: vertical;
+    }
+
+    .registro-card {
+        max-width: 400px;
+        width: 92%;
+        padding: 26px 22px;
+        border-radius: 18px;
+        backdrop-filter: blur(6px);
+    }
+
+    /* ============================
+                 LOGIN
+    ============================ */
+
+    .login-card {
+        max-width: 400px;
+        width: 92%;
+        padding: 26px 22px;
+        border-radius: 18px;
+        backdrop-filter: blur(6px);
+    }
+
+    .form-group-login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 14px;
+    }
+
+    .campo-label-login {
+        width: 100%;
+        max-width: 260px;
+        text-align: left;
+        margin-bottom: 6px;
+        font-size: 16px;
+    }
+
+    .form-control-login {
+        width: 100%;
+        max-width: 260px;
+        font-size: 15px;
+        padding: 8px 10px;
+    }
+
+    /* Ajuste del campo contraseña */
+    .password-wrapper {
+        width: 100%;
+        max-width: 260px;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .password-wrapper input {
+        flex: 1;
+        width: 100%;
+    }
+
+    .toggle-password {
+        margin-left: 8px;
+    }
+
+    /* ============================
+            ADMIN USUARIOS
+    ============================ */
+
+    .editar-card {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    /* ============================
+            EDITAR USUARIO
+    ============================ */
+
+    .editar-card {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .guardar {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    /* ============================
+                CARRITO
+    ============================ */
+
+    .table-carrito {
+        font-size: 14px;
+    }
+
+    .table-carrito th,
+    .table-carrito td {
+        white-space: nowrap; /* Evita saltos raros */
+    }
+
+    .input-cantidad {
+        width: 60px;
+    }
+
+    .resumen-pedido {
+        margin-top: 20px;
+    }
+}
+
+/* ================================
+       AJUSTES PARA TABLETS
+ ================================ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /* ===== PERFIL ===== */
+
+    /* Más espacio vertical en tablets */
+    .body-perfil {
+        padding: 50px 0;
+    }
+
+    /* Tarjeta de perfil algo más grande y cómoda */
+    .perfil-card {
+        max-width: 520px;
+        padding: 32px 30px 34px;
+        border-radius: 18px;
+        min-height: auto;
+        padding-bottom: 24px;
+    }
+
+    /* Icono de usuario más grande */
+    .logo-perfil i {
+        font-size: 46px;
+    }
+
+    /* Título del perfil más grande */
+    .logo-perfil h3 {
+        font-size: 26px;
+    }
+
+    /* Etiquetas de los campos ligeramente más grandes */
+    .campo-label-perfil {
+        font-size: 15px;
+    }
+
+    /* Inputs más cómodos para tablet */
+    .form-control-perfil {
+        font-size: 15.5px;
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+
+    /* Altura fija para el textarea de dirección */
+    textarea.form-control-perfil {
+        height: 42px;
+    }
+
+    /* Botón guardar pasa a posición normal y ocupa todo el ancho */
+    .guardar {
+        position: static;
+        margin-top: 22px;
+    }
+
+    .btn-perfil-guardar {
+        width: 100%;
+        font-size: 15.5px;
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    /* ===== CARTA / NAVBAR ===== */
+
+    /* Centrar el menú en tablets y dar espacio fijo entre enlaces */
+    .navbar-principal .container-fluid {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .navbar-principal a {
+        margin: 5px 0;
+        white-space: nowrap; /* Evita que se rompan en varias líneas */
+    }
+
+    /* Iconos circulares más grandes en tablets */
+    .icono-circulo img, .icono-circulo i {
+        font-size: 38px;
+    }
+
+    /* ===== INDEX EN TABLET ===== */
+
+    .contenedor-principal {
+        max-width: 900px;
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    /* Enlaces y textos de navbar más grandes */
+    .navbar-principal a, .navbar-principal span {
+        font-size: 19px;
+    }
+
+    /* Título principal más grande */
+    .bloque-titulo h1 {
+        font-size: 38px;
+    }
+
+    .bloque-titulo p {
+        font-size: 24px;
+    }
+
+    /* Iconos superiores más grandes */
+    .icono-circulo img {
+        width: 75px;
+    }
+
+    .icono-circulo {
+        width: 85px;
+        height: 85px;
+    }
+
+    .icono-carrito i {
+        font-size: 42px;
+    }
+
+    /* Logo central más grande en tablets */
+    .logo-rombo {
+        width: 190px;
+        height: 190px;
+    }
+
+    .logo-rombo img {
+        width: 200px;
+    }
+
+    /* ===== AJUSTES DE TAMAÑO BLOQUE CENTRAL ===== */
+
+    /* Títulos principales aún más grandes en tablet */
+    .bloque-titulo h1 {
+        font-size: 44px;
+    }
+
+    .bloque-titulo p {
+        font-size: 26px;
+    }
+
+    /* Subtítulos como “Novedades” y “Top ventas” */
+    h3.text-danger {
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 30px;
+    }
+
+    /* Nombre del producto más grande */
+    .producto h5 {
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    /* Descripción del producto más legible */
+    .producto p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    /* Precio más destacado */
+    .producto strong {
+        font-size: 19px;
+    }
+
+    /* Botón “Añadir al carrito” más grande */
+    .producto .btn {
+        font-size: 17px;
+        padding: 3px;
+    }
+
+    /* ===== FOOTER EN TABLET ===== */
+
+    .footer-cheese h5 {
+        font-size: 34px;
+    }
+
+    .footer-cheese .footer-linea {
+        font-size: 23px;
+    }
+
+    .footer-cheese .footer-texto {
+        font-size: 22px;
+    }
+
+    .footer-cheese .footer-subtexto {
+        font-size: 22px;
+    }
+
+    /* ===== PANEL ADMIN ===== */
+
+    .card-stat {
+        padding: 30px;
+        min-height: 180px;
+    }
+
+    .card-stat h2 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .card-stat p {
+        font-size: 18px;
+    }
+
+    /* ===== DETALLE DE PEDIDOS ===== */
+
+    /* Centrar verticalmente el contenido en tablets */
+    .body-detalle-pedido {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 0;
+    }
+
+    .tarjeta-detalle {
+        max-width: 720px;
+        padding: 26px 24px;
+        border-radius: 19px;
+        font-size: 17px;
+    }
+
+    .card-header h3 {
+        font-size: 24px;
+    }
+
+    .card-body h5 {
+        font-size: 19px;
+        margin-top: 22px;
+    }
+
+    .card-body p {
+        font-size: 16.5px;
+    }
+
+    .producto-item {
+        font-size: 16px;
+        padding: 13px;
+    }
+
+    .producto-item img {
+        width: 65px;
+        height: 65px;
+    }
+
+    /* ===== ADMIN USUARIOS ===== */
+
+    /* Tarjeta de administración algo más estrecha en tablet */
+    .admin-card {
+        width: 90%;
+    }
+
+    /* ===== EDITAR USUARIOS ===== */
+
+    .editar-card {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    /* Botón guardar fijo abajo a la derecha */
+    .guardar {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
 }

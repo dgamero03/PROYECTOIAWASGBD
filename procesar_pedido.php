@@ -1,45 +1,54 @@
 <?php
-session_start();
-require 'conexion.php';
+session_start(); // Inicia la sesión
+require 'conexion.php'; // Conexión a la base de datos
 
 // Verificar que el usuario está logueado y tiene carrito
 if (!isset($_SESSION['usuario_id']) || empty($_SESSION['carrito'])) {
-    header('Location: login.php');
+    header('Location: login.php'); // Si no, redirige al login
     exit();
 }
 
+// Si el formulario se envía por POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    // Datos del usuario desde la sesión
     $usuario_id = $_SESSION['usuario_id'];
     $nombre_cliente = $_SESSION['nombre'];
     $telefono = $_SESSION['telefono'];
+
+    // Tipo de pedido (domicilio o recogida)
     $tipo = $_POST['tipo'];
+
+    // Dirección según tipo de pedido
     $direccion = ($tipo == 'domicilio') ? $_SESSION['direccion'] : 'Recogida en local';
     
-    // Calcular total y tiempo máximo
+    // Calcular total y tiempo máximo de preparación
     $total = 0;
     $tiempo_maximo = 0;
     
     foreach ($_SESSION['carrito'] as $item) {
-        $total += $item['precio'] * $item['cantidad'];
-        $tiempo_maximo = max($tiempo_maximo, $item['tiempo_preparacion']);
+        $total += $item['precio'] * $item['cantidad']; // Suma del precio total
+        $tiempo_maximo = max($tiempo_maximo, $item['tiempo_preparacion']); // Tiempo más largo
     }
     
-    // Añadir coste de envío si es domicilio y total < 15
+    // Añadir coste de envío si es domicilio y total < 15€
     if ($tipo == 'domicilio' && $total < 15) {
         $total += 2.50;
     }
     
-    $tiempo_estimado = $tiempo_maximo + 15; // +15 minutos para envío/preparación
+    // Tiempo estimado final (+15 minutos extra)
+    $tiempo_estimado = $tiempo_maximo + 15;
     
     // 1. Insertar pedido en tabla pedidos
-   $sql_pedido = "INSERT INTO pedidos (usuario_id, nombre_cliente, telefono, tipo, direccion, tiempo_estimado, total, estado) 
+    $sql_pedido = "INSERT INTO pedidos (usuario_id, nombre_cliente, telefono, tipo, direccion, tiempo_estimado, total, estado) 
                VALUES ('$usuario_id', '$nombre_cliente', '$telefono', '$tipo', '$direccion', '$tiempo_estimado', '$total', 'pendiente')";
 
-    
+    // Si el pedido se inserta correctamente
     if ($mysqli->query($sql_pedido)) {
-        $pedido_id = $mysqli->insert_id;
+
+        $pedido_id = $mysqli->insert_id; // ID del pedido recién creado
         
-        // 2. Insertar detalles del pedido
+        // 2. Insertar detalles del pedido (productos)
         foreach ($_SESSION['carrito'] as $item) {
             $producto_id = $item['id'];
             $cantidad = $item['cantidad'];
@@ -54,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 3. Vaciar carrito
         $_SESSION['carrito'] = [];
         
-        // 4. Mostrar confirmación
+        // 4. Mostrar confirmación del pedido
         ?>
         <!doctype html>
         <html lang="es">
@@ -64,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <link rel="stylesheet" href="css/bootstrap.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
             <title>Pedido Confirmado - Cheese Burger</title>
+
+            <!-- Estilos internos para la tarjeta de confirmación -->
             <style>
                 .confirmacion {
                     background: linear-gradient(135deg, #28a745, #20c997);
@@ -81,17 +92,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             </style>
         </head>
+
         <body>
             <div class="container">
                 <div class="confirmacion">
                     <i class="fas fa-check-circle fa-4x mb-4"></i>
                     <h1>¡Pedido Confirmado!</h1>
                     
+                    <!-- Número de pedido -->
                     <div class="mt-4 mb-4">
                         <h3>Número de Pedido</h3>
                         <div class="numero-pedido">#<?php echo str_pad($pedido_id, 6, '0', STR_PAD_LEFT); ?></div>
                     </div>
                     
+                    <!-- Información del pedido -->
                     <div class="alert alert-light text-dark mt-4">
                         <h5><i class="fas fa-info-circle"></i> Información del Pedido</h5>
                         <p class="mb-1"><strong>Tipo:</strong> <?php echo $tipo == 'domicilio' ? 'A domicilio' : 'Recogida en local'; ?></p>
@@ -101,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p class="mb-0"><strong>Teléfono:</strong> <?php echo htmlspecialchars($telefono); ?></p>
                     </div>
                     
+                    <!-- Botones -->
                     <div class="mt-4">
                         <a href="mis_pedidos.php" class="btn btn-light btn-lg mr-3">
                             <i class="fas fa-list"></i> Ver Mis Pedidos
@@ -114,12 +129,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </body>
         </html>
         <?php
+
     } else {
+        // Error al insertar el pedido
         echo "Error al procesar el pedido: " . $mysqli->error;
     }
+
 } else {
+    // Si se accede sin POST, volver al carrito
     header('Location: carrito.php');
 }
 
-$mysqli->close();
+$mysqli->close(); // Cerrar conexión
 ?>

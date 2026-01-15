@@ -1,33 +1,50 @@
 <?php
-session_start();
-require 'conexion.php';
+session_start(); // Inicia la sesión
+require 'conexion.php'; // Conexión a la base de datos
 
+// ===============================
+// PROCESAR PETICIÓN POST
+// ===============================
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $producto_id = $_POST['producto_id'];
-    
-    // Verificar que el producto existe y está activo
+
+    $producto_id = $_POST['producto_id']; // ID del producto enviado
+
+    // ===============================
+    // VERIFICAR QUE EL PRODUCTO EXISTE Y ESTÁ ACTIVO
+    // ===============================
     $sql_producto = "SELECT * FROM productos WHERE id = $producto_id AND activo = 1";
     $result_producto = $mysqli->query($sql_producto);
-    
+
+    // Si el producto existe
     if ($result_producto->num_rows > 0) {
-        $producto = $result_producto->fetch_assoc();
-        
-        // Inicializar carrito en sesión si no existe
+
+        $producto = $result_producto->fetch_assoc(); // Datos del producto
+
+        // ===============================
+        // INICIALIZAR CARRITO SI NO EXISTE
+        // ===============================
         if (!isset($_SESSION['carrito'])) {
             $_SESSION['carrito'] = [];
         }
-        
-        // Verificar si el producto ya está en el carrito
+
+        // ===============================
+        // VERIFICAR SI EL PRODUCTO YA ESTÁ EN EL CARRITO
+        // ===============================
         $encontrado = false;
+
         foreach ($_SESSION['carrito'] as &$item) {
             if ($item['id'] == $producto_id) {
-                $item['cantidad'] += 1;
+                $item['cantidad'] += 1; // Aumentar cantidad
                 $encontrado = true;
                 break;
             }
         }
-        
-        // Si no estaba, añadirlo
+
+        unset($item); // Buenas prácticas al usar referencias
+
+        // ===============================
+        // SI NO ESTABA EN EL CARRITO, AÑADIRLO
+        // ===============================
         if (!$encontrado) {
             $_SESSION['carrito'][] = [
                 'id' => $producto_id,
@@ -37,20 +54,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'tiempo_preparacion' => $producto['tiempo_preparacion']
             ];
         }
-        
-        // Redirigir a carrito o mantener en misma página
+
+        // ===============================
+        // REDIRECCIÓN SEGÚN ORIGEN
+        // ===============================
         if (isset($_POST['redirigir']) && $_POST['redirigir'] == 'carrito') {
-            header('Location: carrito.php');
+            header('Location: carrito.php'); // Ir al carrito
         } else {
+            // Volver a la página anterior con indicador de éxito
             header('Location: ' . $_SERVER['HTTP_REFERER'] . '?agregado=1');
         }
+
         exit();
+
     } else {
+        // Producto no válido
         echo "Producto no encontrado o no disponible";
     }
+
 } else {
+    // Si no es POST, redirigir al inicio
     header('Location: index.php');
 }
 
-$mysqli->close();
+$mysqli->close(); // Cerrar conexión
 ?>
