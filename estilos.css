@@ -576,7 +576,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra */
     width: 100%;
     max-width: 550px; /* Ancho máximo */
-    min-height: 550px;
+    max-height: 560px;
     position: relative; /* Para botón guardar */
     padding-bottom: 90px; /* Espacio para el botón */
 }
@@ -651,10 +651,10 @@ body {
 }
 
 /* Botón guardar abajo */
-.guardar {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+.guardar-perfil {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* Botón guardar */
@@ -1791,13 +1791,24 @@ h2 {
     }
 
     .card-producto .btn {
-        padding: 2px 4px;
+        padding: 6px 4px;
         font-size: 12px;
     }
 
     /* Icono info más grande */
     .icono-circulo img, .icono-circulo i {
         font-size: 28px;
+    }
+
+    .img-bebida {
+    height: 160px;
+    }
+
+    .card-producto form {
+    width: 65%;
+}
+    .card-producto button {
+        min-height: 34px;
     }
 
     /* ============================
@@ -2146,6 +2157,7 @@ h2 {
     /* Tarjeta de perfil algo más grande y cómoda */
     .perfil-card {
         max-width: 520px;
+        max-height: 580px;
         padding: 32px 30px 34px;
         border-radius: 18px;
         min-height: auto;

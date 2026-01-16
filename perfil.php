@@ -124,7 +124,7 @@ $usuario = $result_usuario->fetch_assoc(); // Datos del usuario
     </form>
 
     <!-- Botón guardar -->
-    <div class="guardar">
+    <div class="guardar-perfil">
         <button type="submit" form="formPerfil" class="btn-perfil-guardar">
             <i class="fas fa-save"></i> Guardar cambios
         </button>

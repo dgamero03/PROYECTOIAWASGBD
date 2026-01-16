@@ -19,6 +19,7 @@ $sql_vendidos = "
     FROM productos p
     LEFT JOIN detalles_de_pedidos d ON p.id = d.producto_id
     WHERE p.activo = 1
+    AND p.categoria != 'bebidas'
     GROUP BY p.id
     HAVING total_vendido > 0
     ORDER BY total_vendido DESC
